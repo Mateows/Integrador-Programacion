@@ -97,7 +97,7 @@ def filtrar_por_poblacion(paises):
             break
         except ValueError:
             print("ERROR. Por favor ingrese un número entero positivo.")
-    ###Guardamos los valores en resultados y reccoremos un bucle
+    ###Guardamos los valores en resultados, recorriendo una lista por comprensión para buscar las coincidencias
     resultados = [pais for pais in paises if poblacion_minima <= pais["poblacion"] <= poblacion_maxima]
     #Mostramos los resultados o el mensaje de error correspondiente
     if resultados:
@@ -106,11 +106,6 @@ def filtrar_por_poblacion(paises):
             print(f"{pais["nombre"]}| Población: {pais["poblacion"]} habitantes | Superficie: {pais["superficie"]} km2| Continente: {pais["continente"]}")
     else:
         print("No hay coincidencias con las poblaciones ingresadas")
-
-
-
-
-
 
 
 
