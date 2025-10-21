@@ -48,11 +48,19 @@ def buscar_pais(paises):
         if pais_a_buscar in pais["nombre"]:
             resultados.append(pais)
 
-
+#pais in resultados
     if resultados:
-        print("Resultados encontrados:")
+    # Imprime la cabecera (mantenemos f-string para alineación)
+        print(f"\n{'Nombre':<30} | {'Población':<15} | {'Superficie (km²)':<20}| {"Continente":<15}")
+        print("-" * 90)
+    # Imprime cada país
         for pais in resultados:
-            print(f"{pais["nombre"]}| Población: {pais["poblacion"]} habitantes | Superficie: {pais["superficie"]} km2| Continente: {pais["continente"]}")
+            nombre = pais.get('nombre', 'N/A')
+            poblacion = pais.get('poblacion', 0)
+            superficie = pais.get('superficie', 0)
+            continente = pais.get('continente', 'N/A')
+            # Mantenemos f-string para formato de números y alineación
+            print(f"{nombre:<30} | {poblacion:<15,d} | {superficie:<20,.2f} | {continente:<15}")
     else:
         print("No hay coincidencias con el país ingresado")
 
@@ -60,7 +68,7 @@ def buscar_pais(paises):
 #Funcion para filtrar paises por continente
 def filtrar_por_continente(paises):
     #Buscamos el continente que el usuario ingrese
-    continente = input("Ingrese el contienen para filtar: ").strip().title()
+    continente = input("Ingrese el continente para filtar: ").strip().title()
     resultados = []
     #Recorremos el archivo, si lo que se ingreso es igual a algún continente, lo almacenamos en resultados
     for pais in paises:
@@ -69,9 +77,15 @@ def filtrar_por_continente(paises):
 
 #En caso de que se guarde algun continente en resultados o no, mostramos el mensaje correspondiente
     if resultados:
-        print(f"Paises en el continente {continente}")
+        print(f"\n{'Nombre':<30} | {'Población':<15} | {'Superficie (km²)':<20}")
+        print("-" * 80)
         for pais in resultados:
-            print(f"{pais["nombre"]}| Población: {pais["poblacion"]} habitantes | Superficie: {pais["superficie"]} km2| Continente: {pais["continente"]}")
+            nombre = pais.get('nombre', 'N/A')
+            poblacion = pais.get('poblacion', 0)
+            superficie = pais.get('superficie', 0)
+            continente = pais.get('continente', 'N/A')
+            # Mantenemos f-string para formato de números y alineación
+            print(f"{nombre:<30} | {poblacion:<15,d} | {superficie:<20,.2f}")
     else:
         print("No hay coincidencias con el continente ingresado")
 
@@ -83,7 +97,7 @@ def filtrar_por_poblacion(paises):
     #Insistimos en que el usuario ingrese valores válidos para la población mínima
     while True:
         try:
-            poblacion_minima = int(input("Ingrese la población mínima: ")).strip()
+            poblacion_minima = int(input("Ingrese la población mínima: "))
             if poblacion_minima < 0:
                 print("El número debe ser mayor a 0.")
                 continue
@@ -94,7 +108,7 @@ def filtrar_por_poblacion(paises):
     #Insistimos en que el usuario ingrese valores válidos para la población máxima
     while True:
         try:
-            poblacion_maxima = int(input("Ingrese la población máxima:")).strip()
+            poblacion_maxima = int(input("Ingrese la población máxima:"))
             if poblacion_maxima < poblacion_minima:
                 print("ERROR. La población debe de ser mayor a la minima.")
                 continue
@@ -105,9 +119,17 @@ def filtrar_por_poblacion(paises):
     resultados = [pais for pais in paises if poblacion_minima <= pais["poblacion"] <= poblacion_maxima]
     #Mostramos los resultados o el mensaje de error correspondiente
     if resultados:
-        print(f"Paises con la poblacion entre {poblacion_minima} y {poblacion_maxima}")
+        print(f"Paises con la poblacion entre {poblacion_minima} y {poblacion_maxima} de habitantes")
+        #Esto es para mantener la alineación de las columnas, para que sea vea de forma prolija
+        print(f"\n{'Nombre':<30} | {'Población':<15} | {'Superficie (km²)':<20}| {"Continente":<15}")
+        print("-" * 90)
         for pais in resultados:
-            print(f"{pais["nombre"]}| Población: {pais["poblacion"]} habitantes | Superficie: {pais["superficie"]} km2| Continente: {pais["continente"]}")
+            nombre = pais.get('nombre', 'N/A')
+            poblacion = pais.get('poblacion', 0)
+            superficie = pais.get('superficie', 0)
+            continente = pais.get('continente', 'N/A')
+            # Mantenemos f-string para formato de números y alineación
+            print(f"{nombre:<30} | {poblacion:<15,d} | {superficie:<20,.2f} | {continente:<15}")
     else:
         print("No hay coincidencias con las poblaciones ingresadas")
 ################################################################################################################################################################################
@@ -250,38 +272,6 @@ def ordenar_por_poblacion(lista_paises):
 
 
 ################################################################OPCIONES 7. 8 Y 9################################################################################################################
-def cargar_paises(ruta_archivo):
-    paises = []
-    try:
-        with open(ruta_archivo, newline="", encoding = "utf-8") as archivo:
-            lector = csv.DictReader(archivo)
-            for fila in lector:
-                try:
-                    #Convertimos los datos a los tipos adecuados y los almacenamos en un diccionario
-                    pais = {
-                        "nombre": fila["nombre"],
-                        "poblacion": int(fila["poblacion"]),
-                        "superficie": float(fila["superficie"]),
-                        "continente": fila["continente"]
-                    }
-                    paises.append(pais) #<---- Aquí se almacenan todos los datos
-                except ValueError:
-                    print(f"Error: Datos inválidos en la fila: {fila}. Saltando fila.")
-                except KeyError:
-                    print(f"Error: Faltan columnas en el CSV. Fila: {fila}. Saltando fila.")
-    except FileNotFoundError:
-        print(f"Error: No se encontró el archivo en la ruta: {ruta_archivo}")
-        return [] # Devuelve lista vacía para que el programa no falle
-    except Exception as e:
-        print(f"Ocurrió un error inesperado al cargar el archivo: {e}")
-        return []
-
-    return paises
-
-
-
-
-
     # Opción 7: Ordenar países por superficie.
     #Pide al usuario si quiere ascendente o descendente, valida la entrada
     #y muestra los resultados en pantalla.
@@ -449,7 +439,7 @@ def _guardar_csv(paises, ruta_csv):
     
     try:
         with open(ruta_csv, "w", newline="", encoding="utf-8") as archivo:
-            escritor = csv.DictWriter(archivo, fieldnames=pais)
+            escritor = csv.DictWriter(archivo, fieldnames=paises)
             escritor.writeheader()
             for p in paises:
                 escritor.writerow(p)
