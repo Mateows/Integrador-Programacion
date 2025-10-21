@@ -104,8 +104,8 @@ def ordenar_por_nombre(lista_paises):
     orden_inverso = _obtener_orden()
     
     paises_ordenados = sorted(lista_paises, 
-                            key=lambda pais: pais.get('nombre', ''), 
-                            reverse=orden_inverso)
+                              key=lambda pais: pais.get('nombre', ''), 
+                              reverse=orden_inverso)
     
     _mostrar_paises_lista(paises_ordenados)
 
@@ -121,7 +121,7 @@ def ordenar_por_poblacion(lista_paises):
     orden_inverso = _obtener_orden()
     
     paises_ordenados = sorted(lista_paises, 
-                            key=lambda pais: pais.get('poblacion', 0), 
-                            reverse=orden_inverso)
+                              key=lambda pais: pais.get('poblacion', 0), 
+                              reverse=orden_inverso)
     
     _mostrar_paises_lista(paises_ordenados)
