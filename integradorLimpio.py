@@ -1,6 +1,20 @@
 import csv
 ####################################################################CARGAMOS EL CSV############################################################################################################
 #Cargamos el archivo CSV "paises.csv" para importar los datos de los países y asi trabajar en el codigo
+#HACER LA CREACION DE OS PARA CREAR UN ARCHIVO CSV SI NO EXISTE
+#MODULARIZAR LAS FUNCIONES EN CATEGORIAS (por ejemplo, que mostrar pais/buscar pais por nombre se encuentren en una funcion llamda "funcion_busqueda_y_muestra" por ejemplo)
+#HAGAN UNA COPIA DE SEGURIDAD DEL ARCHIVO Y GUARNDELO BIEN, Y COPIEN EL REPOSITORIO DE GITHUB PARA REALIZAR CAMBIOS DIARIOS
+
+
+
+
+
+
+
+
+
+
+
 def cargar_paises(ruta_archivo):
     paises = []
     try:
@@ -314,6 +328,7 @@ def mostrar_estadisticas(paises):
     # Opción 8: Muestra estadísticas generales de los países.
     # Incluye totales, promedios y países con máximos/mínimos valores.
 
+##Hacer un cambio en lo que se muestra por pantalla y hacerlo parecido o similar a las opciones 1/2 
     if not paises:
         print("No hay datos disponibles para mostrar estadísticas.")
         return
@@ -333,7 +348,7 @@ def mostrar_estadisticas(paises):
         print(f"Ocurrió un error al calcular las estadísticas: {e}")
         return
     
-    print("\n--- ESTADÍSTICAS GENERALES ---")
+    print("\n--- Estadísticas Generales de Países ---")
     print(f"Cantidad total de países: {total}")
     print(f"Población total: {poblacion_total:,}")
     print(f"Población promedio: {promedio_poblacion:,.2f}")
@@ -449,7 +464,18 @@ def _guardar_csv(paises, ruta_csv):
 
 
 
-
+def mostrar_paises(paises):
+    # Imprime la cabecera (mantenemos f-string para alineación)
+        print(f"\n{'Nombre':<30} | {'Población':<15} | {'Superficie (km²)':<20}| {"Continente":<15}")
+        print("-" * 90)
+    # Imprime cada país
+        for pais in paises:
+            nombre = pais.get('nombre', 'N/A')
+            poblacion = pais.get('poblacion', 0)
+            superficie = pais.get('superficie', 0)
+            continente = pais.get('continente', 'N/A')
+            # Mantenemos f-string para formato de números y alineación
+            print(f"{nombre:<30} | {poblacion:<15,d} | {superficie:<20,.2f} | {continente:<15}")
 
 
 
@@ -459,16 +485,17 @@ def _guardar_csv(paises, ruta_csv):
 #########################################################MENU PRINCIPAL#######################################################################################################################
 def mostrar_menu():
     print("\n------ MENÚ PRINCIPAL ------")
-    print("1. Buscar pais por nombre")#Mateo
-    print("2. Filtrar países por continente")#Mateo
-    print("3. Filtrar países por población")#Mateo
-    print("4. Filtar países por superficie")#Lucas
-    print("5. Ordenar países por nombre")#Lucas
-    print("6. Ordenar países por población")#Lucas
-    print("7. Ordenar países por superficie")#Amanda
-    print("8. Mostrar estadísticas")#Amanda
-    print("9. Agregar/Eliminar país")#Amanda
-    print("10. Salir")
+    print("1. Mostrar paises")
+    print("2. Buscar pais por nombre")#Mateo
+    print("3. Filtrar países por continente")#Mateo
+    print("4. Filtrar países por población")#Mateo
+    print("5. Filtar países por superficie")#Lucas
+    print("6. Ordenar países por nombre")#Lucas
+    print("7. denar países por población")#Lucas
+    print("8 Ordenar países por superficie")#Amanda
+    print("9. Mostrar estadísticas")#Amanda
+    print("10. Agregar/Eliminar país")#Amanda
+    print("11. Salir")
 ################################################################################################################################################################################
 
 
@@ -490,31 +517,33 @@ def ejecutar_programa():
 
         match opcion:
             case "1":
+                mostrar_paises(paises)
+            case "2":
                 # buscar_pais(paises) # <--- Función de Mateo
                 buscar_pais(paises)
-            case "2":
+            case "3":
                 # filtrar_por_continente(paises) # <--- Función de Mateo
                 filtrar_por_continente(paises)
-            case "3":
+            case "4":
                 # filtrar_por_poblacion(paises) # <--- Función de Mateo
                 filtrar_por_poblacion(paises)
-            case "4":
-                filtrar_por_superficie(paises)
             case "5":
-                ordenar_por_nombre(paises)
+                filtrar_por_superficie(paises)
             case "6":
+                ordenar_por_nombre(paises)
+            case "7":
                 ordenar_por_poblacion(paises)
             
-            case "7":
-                # pass # <--- Función de Amanda
-                ordenar_por_superficie(paises)
             case "8":
                 # pass # <--- Función de Amanda
-                mostrar_estadisticas(paises)
+                ordenar_por_superficie(paises)
             case "9":
                 # pass # <--- Función de Amanda
-                agregar_o_eliminar_pais(paises)
+                mostrar_estadisticas(paises)
             case "10":
+                # pass # <--- Función de Amanda
+                agregar_o_eliminar_pais(paises)
+            case "11":
                 print("¡Hasta luego!")
                 break
             case _:
