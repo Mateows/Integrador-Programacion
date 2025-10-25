@@ -138,9 +138,25 @@ guardar_paises_csv()
 
 def normalizar_palabra(texto):
     texto = texto.lower()
+<<<<<<< Updated upstream
     texto = unicodedata.normalize('NFKD', texto)
     texto = ''.join([c for c in texto if not unicodedata.combining(c)])
     return texto
+=======
+    reemplazos = (
+        ("á", "a"), ("é", "e"), ("í", "i"), ("ó", "o"), ("ú", "u"),
+        ("à", "a"), ("è", "e"), ("ì", "i"), ("ò", "o"), ("ù", "u"),
+        ("ä", "a"), ("ë", "e"), ("ï", "i"), ("ö", "o"), ("ü", "u"),
+        ("ñ", "n")
+    )
+    # El bucle ahora corre todas las veces necesarias
+    for original, reemplazo in reemplazos:
+        texto = texto.replace(original, reemplazo)
+    
+    # El return se ejecuta DESPUÉS de que el bucle termine
+return texto
+
+>>>>>>> Stashed changes
 
 
 
