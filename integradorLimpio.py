@@ -1,5 +1,8 @@
 import csv
 import requests
+import unicodedata
+
+
 ####################################################################CARGAMOS EL CSV############################################################################################################
 #TRATAR DE MODULARIZAR ANTES QUE COMENZAR A CAMBIAR LOS NOMBRES DE LAS VARIABLES ASI SE HACE MAS COMODO CAMBIARLAS DESPUES
 #MODIFICAR LAS FUNCIONES Y VARIABLES PARA QUE FUNCIONEN CORRECTAMENTE (FIJENSE BIEN COMO ESTÁN ESCRITAS EN LA OPCION FINAL (MOSTRAR PAISES Y COMO ESTA EN LA OPCION 2 FILTRAR POR NOMBRE))
@@ -133,21 +136,11 @@ guardar_paises_csv()
 #     return paises
 ################################################################################################################################################################################
 
-def normalizar_manual(texto):
-    """
-    Reemplaza caracteres acentuados por su versión sin tilde
-    y convierte a minúsculas.
-    """
+def normalizar_palabra(texto):
     texto = texto.lower()
-    reemplazos = (
-        ("á", "a"), ("é", "e"), ("í", "i"), ("ó", "o"), ("ú", "u"),
-        ("à", "a"), ("è", "e"), ("ì", "i"), ("ò", "o"), ("ù", "u"),
-        ("ä", "a"), ("ë", "e"), ("ï", "i"), ("ö", "o"), ("ü", "u"),
-        ("ñ", "n")
-    )
-    for original, reemplazo in reemplazos:
-        texto = texto.replace(original, reemplazo)
-        return texto
+    texto = unicodedata.normalize('NFKD', texto)
+    texto = ''.join([c for c in texto if not unicodedata.combining(c)])
+    return texto
 
 
 
@@ -158,12 +151,13 @@ def normalizar_manual(texto):
 def buscar_pais(paises):
     #Buscamos el pais que el usuario ingrese
     pais_a_buscar = input("Ingrese el nombre del país a buscar: ").strip().lower()
-    normalizar_manual(pais_a_buscar)
+    pais_a_buscar = normalizar_palabra(pais_a_buscar)
     #recorremos el archivo buscando coincidencias con el nombre ingresado y lo almacenamos en resultados
     resultados = []
     for pais in paises:
         #Buscamos si las primeras letras que se ingresen coinciden con algun pais
-        if pais_a_buscar in pais["Nombre"].lower():
+        nombre_normalizado = normalizar_palabra(pais["Nombre"])
+        if pais_a_buscar in nombre_normalizado:
             resultados.append(pais)
 
 #pais in resultados
@@ -251,6 +245,8 @@ def filtrar_por_poblacion(paises):
     else:
         print("No hay coincidencias con las poblaciones ingresadas")
 ################################################################################################################################################################################
+
+
 
 
 
