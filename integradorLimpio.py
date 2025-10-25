@@ -1,50 +1,153 @@
 import csv
+import requests
 ####################################################################CARGAMOS EL CSV############################################################################################################
-#Cargamos el archivo CSV "paises.csv" para importar los datos de los países y asi trabajar en el codigo
-#HACER LA CREACION DE OS PARA CREAR UN ARCHIVO CSV SI NO EXISTE
-#MODULARIZAR LAS FUNCIONES EN CATEGORIAS (por ejemplo, que mostrar pais/buscar pais por nombre se encuentren en una funcion llamda "funcion_busqueda_y_muestra" por ejemplo)
-#HAGAN UNA COPIA DE SEGURIDAD DEL ARCHIVO Y GUARNDELO BIEN, Y COPIEN EL REPOSITORIO DE GITHUB PARA REALIZAR CAMBIOS DIARIOS
+#TRATAR DE MODULARIZAR ANTES QUE COMENZAR A CAMBIAR LOS NOMBRES DE LAS VARIABLES ASI SE HACE MAS COMODO CAMBIARLAS DESPUES
+#MODIFICAR LAS FUNCIONES Y VARIABLES PARA QUE FUNCIONEN CORRECTAMENTE (FIJENSE BIEN COMO ESTÁN ESCRITAS EN LA OPCION FINAL (MOSTRAR PAISES Y COMO ESTA EN LA OPCION 2 FILTRAR POR NOMBRE))
+#MODULARIZAR TODAS LAS FUNCIONES Y HACERLAS POR EJEMPLO (UNA FUNCION LLAMADA DATOS_PAISES, TIENE QUE TENER LA FUNCION "BUSCAR PAISES" Y "BUSCAR PAIS POR NOMBRE")
+#CREAR UNA OPCION DE OS POR SI EL ARCHIVO NO EXISTE, YA QUE ESTAMOS CARGANDO UNA API, O SEA EL ARCHIVO SIEMPRE VA A EXISTIR, PERO EN CASO DE QUE NO EXISTA, QUE LO CREE
+#SOLUCIONAR EL PROBLEMA (con ayuda de los profes si es posible y IA) COMO CARGAR LA SUPERFICIE DENTRO DEL CSV, YA QUE LA API NO LA TRAE, POR LO TANTO HAY QUE BUSCAR OTRA FORMA DE CONSEGUIRLA
+#AGREGAR UNA NUEVA VARIABLE QUE SE LLAME "CAPITAL"
+#MODIFICAR LAS FUNCIONES PARA QUE TRAIGAN LA CAPITAL Y LA MUESTREN EN PANTALLA (VA A QUEDAR VER LO DE LA SUPERFICIE, PARA LO QUE ACABO DE DECIR MIREN LA OPCION 1 (AL FINAL DEL TODO)
 
 
 
 
 
+# Nueva URL actualizada de la API
+# URL de la API
+URL_API = "https://restcountries.com/v3.1/all?fields=name,capital,region,population"
+ARCHIVO_CSV = "paises.csv"
 
+# Función para descargar y guardar los datos en un CSV
+def guardar_paises_csv():
+    response = requests.get(URL_API)
+    if response.status_code == 200:
+        countries = response.json()
+        with open(ARCHIVO_CSV, mode="w", newline="", encoding="utf-8") as archivo:
+            writer = csv.writer(archivo)
+            writer.writerow(["Nombre", "Capital", "Región", "Población"])
+            for country in countries:
+                nombre = country.get("name", {}).get("common", "Sin nombre")
+                capitales = country.get("capital", [])
+                capital = capitales[0] if capitales else "Sin capital"
+                region = country.get("region", "Sin región")
+                poblacion = country.get("population", "Desconocida")
+                writer.writerow([nombre, capital, region, poblacion])
+        print("✅ Datos guardados en 'paises.csv'")
+    else:
+        print("❌ Error al obtener los datos:", response.status_code)
 
-
-
-
-
+# Función para cargar los datos desde el CSV
 def cargar_paises(ruta_archivo):
     paises = []
     try:
-        with open(ruta_archivo, newline="", encoding = "utf-8") as archivo:
+        with open(ruta_archivo, newline="", encoding="utf-8") as archivo:
             lector = csv.DictReader(archivo)
             for fila in lector:
                 try:
-                    #Convertimos los datos a los tipos adecuados y los almacenamos en un diccionario
                     pais = {
-                        "nombre": fila["nombre"],
-                        "poblacion": int(fila["poblacion"]),
-                        "superficie": float(fila["superficie"]),
-                        "continente": fila["continente"]
+                        "Nombre": fila["Nombre"],
+                        "Capital": fila["Capital"],
+                        "Región": fila["Región"],
+                        "Población": int(fila["Población"])
                     }
-                    paises.append(pais) #<---- Aquí se almacenan todos los datos y con esto se puede trabajar en el codigo
+                    paises.append(pais)
                 except ValueError:
-                    print(f"Error: Datos inválidos en la fila: {fila}. Saltando fila.")
+                    print(f"⚠️ Error: Datos inválidos en la fila: {fila}. Saltando fila.")
                 except KeyError:
-                    print(f"Error: Faltan columnas en el CSV. Fila: {fila}. Saltando fila.")
+                    print(f"⚠️ Error: Faltan columnas en el CSV. Fila: {fila}. Saltando fila.")
     except FileNotFoundError:
-        print(f"Error: No se encontró el archivo en la ruta: {ruta_archivo}")
-        return [] # Devuelve lista vacía para que el programa no falle
+        print(f"❌ Error: No se encontró el archivo en la ruta: {ruta_archivo}")
     except Exception as e:
-        print(f"Ocurrió un error inesperado al cargar el archivo: {e}")
-        return []
-
+        print(f"❌ Ocurrió un error inesperado al cargar el archivo: {e}")
     return paises
+
+guardar_paises_csv()
+
+
+
+
+
+# def cargar_paises(ruta_archivo):
+#     guardar_paises_csv()
+#     paises = []
+#     try:
+#         with open(ruta_archivo, newline="", encoding = "utf-8") as archivo:
+#             lector = csv.DictReader(archivo)
+#             for fila in lector:
+#                 try:
+#                     #Convertimos los datos a los tipos adecuados y los almacenamos en un diccionario
+#                     pais = {
+#                         "Nombre": fila["nombre"],
+#                         "Capital": fila["capital"],
+#                         "Región": fila["region"],
+#                         "Población": int(fila["poblacion"])
+#                     }
+#                     paises.append(pais) #<---- Aquí se almacenan todos los datos y con esto se puede trabajar en el codigo
+#                 except ValueError:
+#                     print(f"Error: Datos inválidos en la fila: {fila}. Saltando fila.")
+#                 except KeyError:
+#                     print(f"Error: Faltan columnas en el CSV. Fila: {fila}. Saltando fila.")
+#     except FileNotFoundError:
+#         print(f"Error: No se encontró el archivo en la ruta: {ruta_archivo}")
+#         return [] # Devuelve lista vacía para que el programa no falle
+#     except Exception as e:
+#         print(f"Ocurrió un error inesperado al cargar el archivo: {e}")
+#         return []
+
+#     return paises
+
+
+
+
+
+
+# RUTA_ARCHIVO = "paises.csv"
+
+# def cargar_paises(RUTA_ARCHIVO):
+#     paises = []
+#     try:
+#         with open(RUTA_ARCHIVO, newline="", encoding = "utf-8") as archivo:
+#             lector = csv.DictReader(archivo)
+#             for fila in lector:
+#                 try:
+#                     #Convertimos los datos a los tipos adecuados y los almacenamos en un diccionario
+#                     pais = {
+#                         "nombre": fila["nombre"],
+#                         "poblacion": int(fila["poblacion"]),
+#                         "superficie": float(fila["superficie"]),
+#                         "continente": fila["continente"]
+#                     }
+#                     paises.append(pais) #<---- Aquí se almacenan todos los datos y con esto se puede trabajar en el codigo
+#                 except ValueError:
+#                     print(f"Error: Datos inválidos en la fila: {fila}. Saltando fila.")
+#                 except KeyError:
+#                     print(f"Error: Faltan columnas en el CSV. Fila: {fila}. Saltando fila.")
+#     except FileNotFoundError:
+#         print(f"Error: No se encontró el archivo en la ruta: {RUTA_ARCHIVO}")
+#         return [] # Devuelve lista vacía para que el programa no falle
+#     except Exception as e:
+#         print(f"Ocurrió un error inesperado al cargar el archivo: {e}")
+#         return []
+
+#     return paises
 ################################################################################################################################################################################
 
-
+def normalizar_manual(texto):
+    """
+    Reemplaza caracteres acentuados por su versión sin tilde
+    y convierte a minúsculas.
+    """
+    texto = texto.lower()
+    reemplazos = (
+        ("á", "a"), ("é", "e"), ("í", "i"), ("ó", "o"), ("ú", "u"),
+        ("à", "a"), ("è", "e"), ("ì", "i"), ("ò", "o"), ("ù", "u"),
+        ("ä", "a"), ("ë", "e"), ("ï", "i"), ("ö", "o"), ("ü", "u"),
+        ("ñ", "n")
+    )
+    for original, reemplazo in reemplazos:
+        texto = texto.replace(original, reemplazo)
+        return texto
 
 
 
@@ -54,27 +157,28 @@ def cargar_paises(ruta_archivo):
 #Se define la función para buscar un país por nombre.
 def buscar_pais(paises):
     #Buscamos el pais que el usuario ingrese
-    pais_a_buscar = input("Ingrese el nombre del país a buscar: ").strip().title()
+    pais_a_buscar = input("Ingrese el nombre del país a buscar: ").strip().lower()
+    normalizar_manual(pais_a_buscar)
     #recorremos el archivo buscando coincidencias con el nombre ingresado y lo almacenamos en resultados
     resultados = []
     for pais in paises:
         #Buscamos si las primeras letras que se ingresen coinciden con algun pais
-        if pais_a_buscar in pais["nombre"]:
+        if pais_a_buscar in pais["Nombre"].lower():
             resultados.append(pais)
 
 #pais in resultados
     if resultados:
     # Imprime la cabecera (mantenemos f-string para alineación)
-        print(f"\n{'Nombre':<30} | {'Población':<15} | {'Superficie (km²)':<20}| {"Continente":<15}")
+        print(f"\n{'Nombre':<45} | {'Población':<15} | {'Superficie (km²)':<20}| {"Continente":<15}")
         print("-" * 90)
     # Imprime cada país
         for pais in resultados:
-            nombre = pais.get('nombre', 'N/A')
-            poblacion = pais.get('poblacion', 0)
+            nombre = pais.get('Nombre', 'N/A')
+            poblacion = pais.get('Población', 0)
             superficie = pais.get('superficie', 0)
-            continente = pais.get('continente', 'N/A')
+            continente = pais.get('Región', 'N/A')
             # Mantenemos f-string para formato de números y alineación
-            print(f"{nombre:<30} | {poblacion:<15,d} | {superficie:<20,.2f} | {continente:<15}")
+            print(f"{nombre:<45} | {poblacion:<15,d} | {superficie:<20,.2f} | {continente:<15}")
     else:
         print("No hay coincidencias con el país ingresado")
 
@@ -94,10 +198,10 @@ def filtrar_por_continente(paises):
         print(f"\n{'Nombre':<30} | {'Población':<15} | {'Superficie (km²)':<20}")
         print("-" * 80)
         for pais in resultados:
-            nombre = pais.get('nombre', 'N/A')
-            poblacion = pais.get('poblacion', 0)
+            nombre = pais.get('Nombre', 'N/A')
+            poblacion = pais.get('Población', 0)
             superficie = pais.get('superficie', 0)
-            continente = pais.get('continente', 'N/A')
+            continente = pais.get('Región', 'N/A')
             # Mantenemos f-string para formato de números y alineación
             print(f"{nombre:<30} | {poblacion:<15,d} | {superficie:<20,.2f}")
     else:
@@ -130,7 +234,7 @@ def filtrar_por_poblacion(paises):
         except ValueError:
             print("ERROR. Por favor ingrese un número entero positivo.")
     ###Guardamos los valores en resultados, recorriendo una lista por comprensión para buscar las coincidencias
-    resultados = [pais for pais in paises if poblacion_minima <= pais["poblacion"] <= poblacion_maxima]
+    resultados = [pais for pais in paises if poblacion_minima <= pais["Población"] <= poblacion_maxima]
     #Mostramos los resultados o el mensaje de error correspondiente
     if resultados:
         print(f"Paises con la poblacion entre {poblacion_minima} y {poblacion_maxima} de habitantes")
@@ -138,10 +242,10 @@ def filtrar_por_poblacion(paises):
         print(f"\n{'Nombre':<30} | {'Población':<15} | {'Superficie (km²)':<20}| {"Continente":<15}")
         print("-" * 90)
         for pais in resultados:
-            nombre = pais.get('nombre', 'N/A')
-            poblacion = pais.get('poblacion', 0)
+            nombre = pais.get('Nombre', 'N/A')
+            poblacion = pais.get('Población', 0)
             superficie = pais.get('superficie', 0)
-            continente = pais.get('continente', 'N/A')
+            continente = pais.get('Región', 'N/A')
             # Mantenemos f-string para formato de números y alineación
             print(f"{nombre:<30} | {poblacion:<15,d} | {superficie:<20,.2f} | {continente:<15}")
     else:
@@ -167,8 +271,8 @@ def _mostrar_paises_lista(lista_paises):
     
     # Imprime cada país
     for pais in lista_paises:
-        nombre = pais.get('nombre', 'N/A')
-        poblacion = pais.get('poblacion', 0)
+        nombre = pais.get('Nombre', 'N/A')
+        poblacion = pais.get('Población', 0)
         superficie = pais.get('superficie', 0)
         # Mantenemos f-string para formato de números y alineación
         print(f"{nombre:<30} | {poblacion:<15,d} | {superficie:<20,.2f}")
@@ -466,16 +570,16 @@ def _guardar_csv(paises, ruta_csv):
 
 def mostrar_paises(paises):
     # Imprime la cabecera (mantenemos f-string para alineación)
-        print(f"\n{'Nombre':<30} | {'Población':<15} | {'Superficie (km²)':<20}| {"Continente":<15}")
-        print("-" * 90)
+        print(f"\n{'Nombre':<45} | {'Población':<15} | {'Capital':<25} | {"Continente":<25}")
+        print("-" * 110)
     # Imprime cada país
         for pais in paises:
-            nombre = pais.get('nombre', 'N/A')
-            poblacion = pais.get('poblacion', 0)
-            superficie = pais.get('superficie', 0)
-            continente = pais.get('continente', 'N/A')
+            nombre = pais.get('Nombre', 'N/A')
+            poblacion = pais.get('Población', 0)
+            capital = pais.get('Capital', 0)
+            continente = pais.get('Región', 'N/A')
             # Mantenemos f-string para formato de números y alineación
-            print(f"{nombre:<30} | {poblacion:<15,d} | {superficie:<20,.2f} | {continente:<15}")
+            print(f"{nombre:<45} | {poblacion:<15,d} | {capital:<25} | {continente:<25}")
 
 
 
@@ -504,7 +608,8 @@ def mostrar_menu():
 
 ########################################################MENÚ DE OPCIONES############################################################################################################
 def ejecutar_programa():
-    paises = cargar_paises("paises.csv")
+    paises = cargar_paises(ARCHIVO_CSV)
+
     
     # Si no se cargaron países (p.ej. archivo no encontrado), no continuamos.
     if not paises:
