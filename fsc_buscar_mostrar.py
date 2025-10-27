@@ -16,15 +16,19 @@ def normalizar_palabra(texto):
 ##Muestra los resultados encontradoss
 def mostrar_resultados(resultados):
     if resultados:
-        print(f"\n{'Nombre':<45} | {'Población':<15} | {'Capital':<25} | {"Continente":<25}")
+        print(f"\n{'Nombre':<45} | {'Población':<15} | {'Capital':<25} |  | {'Superficie':<25} |   {'Continente':<25} |   {'Lenguaje':<25}  | {'Moneda':<25} |")
         print("-" * 110)
         for pais in resultados:
             nombre = pais.get('nombre', 'N/A')
             poblacion = pais.get('poblacion', 0)
             capital = pais.get('capital', 0)
+            superficie = pais.get("area")
             continente = pais.get('region', 'N/A')
+            lenguaje = pais.get("lenguages")
+            moneda = pais.get("currencies")
+
             # Mantenemos f-string para formato de números y alineación
-            print(f"{nombre:<45} | {poblacion:<15,d} | {capital:<25} | {continente:<25}")
+            print(f"{nombre:<45} | {poblacion:<15,d} | {capital:<25} | {superficie:<25}| {continente:<25} | {lenguaje:<25}| {moneda:<25}")
     else:
         print("No se encontraron coincidencias.")
 
@@ -47,16 +51,22 @@ def buscar_pais(paises):
 
 def mostrar_paises(paises):
     # Imprime la cabecera (mantenemos f-string para alineación)
-        print(f"\n{'Nombre':<45} | {'Población':<15} | {'Capital':<25} | {"Continente":<25}")
+        print(f"\n{'Nombre':<45} | {'Población':<15} | {'Capital':<25} |  | {'Superficie':<25} |   {'Continente':<25} |   {'Lenguaje':<25}  | {'Moneda':<25} |")
         print("-" * 110)
     # Imprime cada país
         for pais in paises:
+            print(f"\n{'Nombre':<45} | {'Población':<15} | {'Capital':<25} |  | {'Superficie':<25} |   {'Continente':<25} |   {'Lenguaje':<25}  | {'Moneda':<25} |")
+            print("-" * 110)
             nombre = pais.get('nombre', 'N/A')
             poblacion = pais.get('poblacion', 0)
             capital = pais.get('capital', 0)
+            superficie = pais.get("area")
             continente = pais.get('region', 'N/A')
+            lenguaje = pais.get("lenguages")
+            moneda = pais.get("currencies")
+
             # Mantenemos f-string para formato de números y alineación
-            print(f"{nombre:<45} | {poblacion:<15,d} | {capital:<25} | {continente:<25}")
+            print(f"{nombre:<45} | {poblacion:<15,d} | {capital:<25} | {superficie:<25}| {continente:<25} | {lenguaje:<25}| {moneda:<25}")
 
 
 def mostrar_menu():
