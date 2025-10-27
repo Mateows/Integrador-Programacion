@@ -63,9 +63,6 @@ def mostrar_paises(paises):
             moneda = pais.get('moneda', '0')
             # Mantenemos f-string para formato de números y alineación
             print(f"{nombre:<45} | {poblacion:<15} | {capital:<25} |   {superficie:<15} |   {continente:<15} |  {moneda:<35}")
-
-
-
 #Opción 9: Permite agregar o eliminar países de la lista, con validaciones y guardado automático al CSV.
 #Amanda
 # def agregar_o_eliminar_pais(paises, ruta_csv="paises.csv"):
