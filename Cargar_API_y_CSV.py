@@ -1,5 +1,6 @@
 import csv
 import requests
+import os
 
 
 
@@ -46,29 +47,34 @@ def guardar_paises_csv():
 
 # Función para cargar los datos desde el CSV
 def cargar_paises():
-
     paises = []
+    if not os.path.exists(ARCHIVO_CSV):
+        print(f"❌ Error: No se encontró el archivo '{ARCHIVO_CSV}'. Ejecutá guardar_paises_csv() primero.")
+        return paises
+
     try:
-        with open("paises.csv", newline="", encoding="utf-8") as archivo:
+        with open(ARCHIVO_CSV, newline="", encoding="utf-8") as archivo:
             lector = csv.DictReader(archivo)
             for fila in lector:
-                try:
-                    pais = {
-                        "nombre": fila["nombre"],
-                        "capital": fila["capital"],
-                        "region": fila["region"],
-                        "poblacion": fila["poblacion"],
-                        "lenguaje": fila["lenguaje"],
-                        "tipo_de_moneda": fila["tipo_de_moneda"],
-                        "superficie": fila["superficie"]
-                    }
-                    paises.append(pais)
-                except ValueError:
-                    print(f"⚠️ Error: Datos inválidos en la fila: {fila}. Saltando fila.")
-                except KeyError:
-                    print(f"⚠️ Error: Faltan columnas en el CSV. Fila: {fila}. Saltando fila.")
+                # usa exactamente los nombres de columnas del CSV
+                pais = {
+                    "nombre": fila.get("nombre", "N/A"),
+
+                    "capital": fila.get("capital", "N/A"),
+
+                    "region": fila.get("region", "N/A"),
+
+                    "poblacion": int(fila.get("poblacion", 0)) if fila.get("poblacion", "").isdigit() else fila.get("poblacion", 0),
+
+                    "lenguaje": fila.get("lenguaje", "N/A"),
+
+                    "moneda": fila.get("moneda", "N/A"),
+                    
+                    "superficie": float(fila.get("superficie", 0)) if fila.get("superficie", "").replace('.', '', 1).isdigit() else fila.get("superficie", 0)
+                }
+                paises.append(pais)
     except FileNotFoundError:
-        print(f"❌ Error: No se encontró el archivo en la ruta: {"archivo.csv"}")
+        print(f"❌ Error: No se encontró el archivo en la ruta: '{ARCHIVO_CSV}'")
     except Exception as e:
         print(f"❌ Ocurrió un error inesperado al cargar el archivo: {e}")
     return paises
