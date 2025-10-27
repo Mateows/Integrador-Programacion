@@ -13,7 +13,7 @@ def guardar_paises_csv():
         countries = response.json()
         with open(ARCHIVO_CSV, mode="w", newline="", encoding="utf-8") as archivo:
             writer = csv.writer(archivo)
-            writer.writerow(["Nombre", "Capital", "Región", "Población"])
+            writer.writerow(["nombre", "capital", "region", "poblacion"])
             for country in countries:
                 nombre = country.get("name", {}).get("common", "Sin nombre")
                 capitales = country.get("capital", [])
@@ -35,10 +35,10 @@ def cargar_paises():
             for fila in lector:
                 try:
                     pais = {
-                        "Nombre": fila["Nombre"],
-                        "Capital": fila["Capital"],
-                        "Región": fila["Región"],
-                        "Población": int(fila["Población"])
+                        "nombre": fila["nombre"],
+                        "capital": fila["capital"],
+                        "region": fila["region"],
+                        "poblacion": int(fila["poblacion"])
                     }
                     paises.append(pais)
                 except ValueError:
