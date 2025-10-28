@@ -1,12 +1,10 @@
 
 # ... (otros imports)
 from Cargar_API_y_CSV import cargar_paises, ARCHIVO_CSV
-from fsc_buscar_mostrar import mostrar_paises, buscar_pais, mostrar_resultados
+from fsc_buscar_mostrar import mostrar_paises, buscar_pais, mostrar_resultados, mostrar_estadisticas, agregar_o_eliminar_pais
+from fsc_filtrado import filtrar_por_continente, filtrar_por_poblacion, filtrar_por_superficie
+from fsc_ordenamiento import ordenar_por_nombre, ordenar_por_poblacion, ordenar_por_superficie
 # ... (el resto de tus imports)
-import csv
-import requests
-import unicodedata
-
 ####################################################################CARGAMOS EL CSV############################################################################################################
 #TRATAR DE MODULARIZAR ANTES QUE COMENZAR A CAMBIAR LOS NOMBRES DE LAS VARIABLES ASI SE HACE MAS COMODO CAMBIARLAS DESPUES
 #MODIFICAR LAS FUNCIONES Y VARIABLES PARA QUE FUNCIONEN CORRECTAMENTE (FIJENSE BIEN COMO ESTÁN ESCRITAS EN LA OPCION FINAL (MOSTRAR PAISES Y COMO ESTA EN LA OPCION 2 FILTRAR POR NOMBRE))

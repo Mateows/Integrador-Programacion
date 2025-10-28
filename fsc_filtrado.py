@@ -1,4 +1,9 @@
 # #Funcion para filtrar paises por continente
+import Cargar_API_y_CSV
+from fsc_buscar_mostrar import _mostrar_paises_lista
+
+
+
 def filtrar_por_continente(paises):
     #Buscamos el continente que el usuario ingrese
     continente = input("Ingrese el continente para filtar: ").strip().title()

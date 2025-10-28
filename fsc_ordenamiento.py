@@ -1,4 +1,6 @@
 import Cargar_API_y_CSV
+from fsc_buscar_mostrar import _obtener_orden, _mostrar_paises_lista
+from fsc_filtrado import _mostrar_paises_lista
 
 # --- TAREA 6: ORDENAR PAÍSES POR NOMBRE (CON MEJORA 2: Flexible) ---(Lucas)
 
@@ -38,7 +40,7 @@ def ordenar_por_poblacion(lista_paises):
 
 #------------------------------------------------------------------------------------------
 
- Opción 8: Ordenar países por superficie.
+#Opción 8: Ordenar países por superficie.
     #Pide al usuario si quiere ascendente o descendente, valida la entrada
     #y muestra los resultados en pantalla.
 

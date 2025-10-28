@@ -1,5 +1,6 @@
 import Cargar_API_y_CSV
 import unicodedata
+import csv
 
 
 
@@ -14,7 +15,6 @@ def normalizar_palabra(texto):
 
 
 ##Muestra los resultados encontradoss
-## Muestra los resultados encontrados (FUNCIÓN CORREGIDA)
 def mostrar_resultados(resultados):
     """
     Función principal para mostrar una lista de países.
@@ -42,6 +42,12 @@ def mostrar_resultados(resultados):
         # --- FILA DE DATOS CON FORMATO ---
         # Aplicamos formato de números
         print(f"{nombre:<45} | {poblacion:<15,d} | {capital:<25} |   {superficie:<20,.2f} |   {continente:<15} |  {moneda:<80}")
+
+
+
+
+
+
 def buscar_pais(paises):
     #Buscamos el pais que el usuario ingrese
     pais_a_buscar = input("Ingrese el nombre del país a buscar: ").strip().lower()
@@ -69,6 +75,9 @@ def mostrar_paises(paises):
     mostrar_resultados(paises) # Reutilizamos la función corregida
 #Opción 9: Permite agregar o eliminar países de la lista, con validaciones y guardado automático al CSV.
 #Amanda
+
+
+
 def agregar_o_eliminar_pais(paises, ruta_csv="paises.csv"):
     
     if not isinstance(paises, list):
@@ -153,6 +162,9 @@ def agregar_o_eliminar_pais(paises, ruta_csv="paises.csv"):
 
     # Guardar cambios
         _guardar_csv(paises, ruta_csv)   
+
+
+
 
 def _guardar_csv(paises, ruta_csv):
 
@@ -243,6 +255,16 @@ def mostrar_estadisticas(paises):
     print("País con menor población:", pais_menor_pob["nombre"], f"({pais_menor_pob['poblacion']:,} habitantes)")
     print("País con mayor superficie:", pais_mayor_sup["nombre"], f"({pais_mayor_sup['superficie']:,.2f} km²)")
     print("País con menor superficie:", pais_menor_sup["nombre"], f"({pais_menor_sup['superficie']:,.2f} km²)")
+
+
+
+
+
+
+
+
+
+
 
 
 
