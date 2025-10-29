@@ -85,12 +85,12 @@ def ordenar_por_poblacion(lista_paises):
 
 # --- TAREA 8: ORDENAR PAÍSES POR SUPERFICIE (CÓDIGO DE AMANDA ) ---
 
+#Opción 8: Ordenar países por superficie.(Amanda)
+    #Pide al usuario si quiere ascendente o descendente, valida la entrada
+    #y muestra los resultados en pantalla.
+#se dejo funcionando esta opcion, con el mismo formato de las opciones 1 y 2
+
 def ordenar_por_superficie(paises):
-    """
-    (Esta es la función original de tu compañera, la dejamos como estaba)
-    """
-    print("\n--- 8. Ordenar Países por Superficie ---")
-    
     if not paises:
         print("No hay datos de países cargados.")
         return
@@ -112,16 +112,22 @@ def ordenar_por_superficie(paises):
         print("Error: los datos de superficie no están correctamente definidos.")
         return
     
-    print("\n--- Países ordenados por superficie ---")
+    # Encabezado
+    print("\n°°°°°°°°°°°°°°°°° Países ordenados por superficie °°°°°°°°°°°°°°°°°  ")
+    print(f"{'Nombre':<45} | {'Superficie (Km²)':>18} | {'Continente/Región':<20}")
+    print("-" * 80)
     
-    # --- CABECERA ---
-    print(f"\n{'Nombre':<45} | {'Población':<15} | {'Superficie (km²)':<20} | {'Continente':<15}")
-    print("-" * 103)
-    
-    # Imprime cada país
+         # Filas
     for p in ordenados:
-        nombre = p.get('nombre', 'N/A')
-        poblacion = p.get('poblacion', 0)
-        superficie = p.get('superficie', 0)
-        continente = p.get('region', 'N/A')
-        print(f"{nombre:<45} | {poblacion:<15,d} | {superficie:<20,.2f} | {continente:<15}")
+        nombre = p.get("nombre", "Desconocido")
+        superficie = p.get("superficie", 0)
+        region = p.get("region", "Desconocido")
+        print(f"{nombre:<45} | {superficie:>18,.2f} | {region:<20}")
+        
+
+    #:<15 significa: - : → empieza el formato - < → alinear a la izquierda15 → ocupar 15 espacios de ancho. 
+    # Esto hace que todos los nombres queden en columnas iguales.
+
+    #:>12, .2f Esto formatea el número de superficie: - > → alinear a la derecha (útil para números)
+    #12 → ocupa 12 espacios de ancho - , → muestra separadores de miles
+    #.2f → muestra 2 decimales, en formato de número flotante (float)

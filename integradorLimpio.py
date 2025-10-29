@@ -4,11 +4,11 @@ from Cargar_API_y_CSV import cargar_paises, ARCHIVO_CSV
 from fsc_buscar_mostrar import mostrar_paises, buscar_pais, mostrar_resultados, mostrar_estadisticas, agregar_o_eliminar_pais, mostrar_menu
 from fsc_filtrado import filtrar_por_continente, filtrar_por_poblacion, filtrar_por_superficie
 from fsc_ordenamiento import ordenar_por_nombre, ordenar_por_poblacion, ordenar_por_superficie
-
-#hhhhhhhhhhh
-
+from fsc_estadisticas import mostrar_estadisticas
 
 
+
+#Agregue las opciones 8,9 y 10 quedan funcionando (Amanda)
 
 ########################################################MENÚ DE OPCIONES############################################################################################################
 def ejecutar_programa():
@@ -51,7 +51,7 @@ def ejecutar_programa():
                 mostrar_estadisticas(paises)
             case "10":
                 # pass # <--- Función de Amanda
-                agregar_o_eliminar_pais(paises)
+                agregar_o_eliminar_pais(paises, "paises.csv")
             case "11":
                 print("¡Hasta luego!")
                 break

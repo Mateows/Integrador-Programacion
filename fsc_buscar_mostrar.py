@@ -52,7 +52,7 @@ def mostrar_resultados(resultados):
 
 
 
-
+#-------------------------------------------------------------------------------------------------
 
 def buscar_pais(paises):
     #Buscamos el pais que el usuario ingrese
@@ -81,11 +81,7 @@ def mostrar_paises(paises):
     mostrar_resultados(paises) # Reutilizamos la función corregida
 #Opción 9: Permite agregar o eliminar países de la lista, con validaciones y guardado automático al CSV.
 #Amanda
-
-
-
 def agregar_o_eliminar_pais(paises, ruta_csv="paises.csv"):
-    
     if not isinstance(paises, list):
         print("Error: la lista de países no es válida.")
         return
@@ -96,8 +92,9 @@ def agregar_o_eliminar_pais(paises, ruta_csv="paises.csv"):
             break
         print("Opción inválida. Ingrese 'A', 'E' o 'V'.")
 
+    # --- VOLVER AL MENÚ ---
     if opcion == "V":
-        return  # vuelve al menú principal
+        return
 
     # --- AGREGAR PAÍS ---
     if opcion == "A":
@@ -106,22 +103,36 @@ def agregar_o_eliminar_pais(paises, ruta_csv="paises.csv"):
             print("El nombre no puede estar vacío.")
             return
         
-    # Evitar duplicados
+        # Evitar duplicados
         for p in paises:
             if p["nombre"].lower() == nombre.lower():
                 print("Ya existe un país con ese nombre.")
                 return
 
-    # Validar población
+        capital = input("Ingrese la capital: ").strip()
+        if not capital:
+            capital = "Desconocida"
+
+        region = input("Ingrese la región o continente: ").strip()
+        if not region:
+            region = "Desconocida"
+
+        lenguaje = input("Ingrese el lenguaje principal: ").strip()
+        if not lenguaje:
+            lenguaje = "Desconocido"
+
+        moneda = input("Ingrese la moneda oficial: ").strip()
+        if not moneda:
+            moneda = "Desconocida"
+
         try:
             poblacion = int(input("Ingrese la población (entero positivo): ").replace(",", ""))
             if poblacion < 0:
-                raise ValueError #se usa para simular un error de valor cuando el dato ingresado es un número,
-                                # pero es lógicamente incorrecto
+                raise ValueError
         except ValueError:
             print("Error: población inválida.")
-            return    
-    # Validar superficie
+            return
+
         try:
             superficie = float(input("Ingrese la superficie (en km²): ").replace(",", "."))
             if superficie < 0:
@@ -130,20 +141,21 @@ def agregar_o_eliminar_pais(paises, ruta_csv="paises.csv"):
             print("Error: superficie inválida.")
             return
 
-        continente = input("Ingrese el continente: ").strip()
-        if not continente:
-            continente = "Desconocido"
-
+        # Crear el nuevo registro
         nuevo = {
             "nombre": nombre,
+            "capital": capital,
+            "region": region,
             "poblacion": poblacion,
-            "superficie": superficie,
-            "continente": continente
+            "lenguaje": lenguaje,
+            "moneda": moneda,
+            "superficie": superficie
         }
+
         paises.append(nuevo)
         print(f"País '{nombre}' agregado correctamente.")
 
-    # Guardar cambios
+        # Guardar cambios
         _guardar_csv(paises, ruta_csv)
 
     # --- ELIMINAR PAÍS ---
@@ -162,29 +174,33 @@ def agregar_o_eliminar_pais(paises, ruta_csv="paises.csv"):
         if confirm != "S":
             print("Operación cancelada.")
             return
-        
+
         paises[:] = [p for p in paises if p["nombre"].lower() != nombre.lower()]
         print(f"País '{nombre}' eliminado correctamente.")
 
-    # Guardar cambios
-        _guardar_csv(paises, ruta_csv)   
+        # Guardar cambios
+        _guardar_csv(paises, ruta_csv)
 
 
-
-
+# --- FUNCIÓN AUXILIAR ---
 def _guardar_csv(paises, ruta_csv):
+    """Guarda la lista actualizada de países en el archivo CSV."""
+    if not paises:
+        print("No hay datos para guardar.")
+        return
 
-    #Guardamos la lista actualizada de países en el CSV.
-    
     try:
+        fieldnames = ["nombre", "capital", "region", "poblacion", "lenguaje", "moneda", "superficie"]
         with open(ruta_csv, "w", newline="", encoding="utf-8") as archivo:
-            escritor = csv.DictWriter(archivo, fieldnames=paises)
+            escritor = csv.DictWriter(archivo, fieldnames=fieldnames)
             escritor.writeheader()
             for p in paises:
                 escritor.writerow(p)
         print(f"Cambios guardados correctamente en '{ruta_csv}'.")
     except Exception as e:
         print(f"No se pudo guardar el archivo CSV: {e}")
+
+
 
 #-----------------------------------------------------------------------------------------------
 
