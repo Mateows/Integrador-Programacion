@@ -6,8 +6,11 @@ import csv
 
 
 def normalizar_palabra(texto):
+   # Convierte texto a minúsculas y elimina acentos para búsquedas flexibles.
     texto = texto.lower()
+    # Normaliza a 'NFKD' para separar caracteres base de diacríticos (acentos)
     texto = unicodedata.normalize('NFKD', texto)
+    # Reconstruye el string omitiendo los caracteres diacríticos
     texto = ''.join([c for c in texto if not unicodedata.combining(c)])
     return texto
 
@@ -27,6 +30,9 @@ def mostrar_resultados(resultados):
 
     # --- CABECERA CORREGIDA ---
     # Usamos los anchos que ya probamos que funcionan
+    # Aplicamos formato de números:
+    # ',d'   -> entero con separador de miles.
+    # ',.2f' -> flotante con separador de miles y 2 decimales.
     print(f"\n{'Nombre':<45} | {'Población':<15} | {'Capital':<25} |   {'Superficie (km²)':<20} |   {'Continente':<15} |  {'Moneda':<80}")
     print("-" * 218)
 

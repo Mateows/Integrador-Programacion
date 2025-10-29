@@ -14,10 +14,13 @@ def guardar_paises_csv():
         countries = response.json()
         with open(ARCHIVO_CSV, mode="w", newline="", encoding="utf-8") as archivo:
             writer = csv.writer(archivo)
+            # Escribe la fila de encabezado en el CSV. Se usan nombres en español y capitalizados por convención inicial.
             writer.writerow(["nombre", "capital", "region", "poblacion", "lenguaje", "moneda", "superficie"])
+            # Itera sobre cada país recibido de la API
             for country in countries:
+                # Se usa .get(clave, valor_por_defecto) para evitar errores si un país no tiene cierto dato en la API.
                 nombre = country.get("name", {}).get("common", "Sin nombre")
-
+# ... resto de extracciones ...
                 capitales = country.get("capital", [])
 
                 capital = capitales[0] if capitales else "Sin capital"
@@ -53,6 +56,9 @@ def cargar_paises():
         return paises
 
     try:
+        # Intenta convertir población a entero y superficie a flotante.
+    # Esto puede fallar si el CSV tiene datos corruptos o no numéricos.
+    # Todas las claves se guardan en minúscula para consistencia en todo el programa.
         with open(ARCHIVO_CSV, newline="", encoding="utf-8") as archivo:
             lector = csv.DictReader(archivo)
             for fila in lector:

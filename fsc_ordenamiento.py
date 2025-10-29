@@ -1,50 +1,96 @@
-import Cargar_API_y_CSV
-from fsc_buscar_mostrar import _obtener_orden, _mostrar_paises_lista
-from fsc_filtrado import _mostrar_paises_lista
+import csv
+from fsc_buscar_mostrar import mostrar_resultados # Aseguramos que la impresora experta esté importada
 
-# --- TAREA 6: ORDENAR PAÍSES POR NOMBRE (CON MEJORA 2: Flexible) ---(Lucas)
+# --- FUNCIÓN HELPER REUTILIZABLE (Flexible) ---
+def _obtener_orden():
+    """
+    Función auxiliar para preguntar al usuario el orden (Asc/Desc).
+    Devuelve el parámetro 'reverse' para la función sorted().
+    """
+    while True:
+        orden = input("¿En qué orden? (ASC = Ascendente / DESC = Descendente): ").strip().upper()
+        if orden == "ASC":
+            return False  # reverse=False
+        elif orden == "DESC":
+            return True   # reverse=True
+        else:
+            print("Opción inválida. Escriba 'ASC' o 'DESC'.")
 
+# --- NUEVA MEJORA (IDEA 2): HELPER PARA LIMITAR RESULTADOS (DRY) ---
+def _limitar_resultados(lista_ordenada):
+    """
+    Función auxiliar para preguntar al usuario si desea limitar los resultados.
+    Devuelve la lista completa o una versión "rebanada" (sliced).
+    """
+    if not lista_ordenada: # Si la lista está vacía, no preguntar nada
+        return lista_ordenada
+        
+    while True:
+        print(f"\nSe encontraron {len(lista_ordenada)} países.")
+        respuesta = input("¿Mostrar todos (T) o solo los N primeros? (Ingrese 'T' o un número N): ").strip().upper()
+        
+        if respuesta == 'T':
+            return lista_ordenada
+        
+        if respuesta.isdigit():
+            n = int(respuesta)
+            if n > 0:
+                print(f"Mostrando los {n} primeros resultados...")
+                return lista_ordenada[:n] # Slicing [:n] obtiene los primeros 'n' elementos
+            else:
+                print("Error: El número debe ser positivo. Intente de nuevo.")
+        else:
+            print("Error: Opción inválida. Ingrese 'T' o un número.")
+
+
+# --- TAREA 6: ORDENAR PAÍSES POR NOMBRE (CON MEJORA) ---
 def ordenar_por_nombre(lista_paises):
     """
     Muestra la lista de países ordenada alfabéticamente por nombre,
-    permitiendo al usuario elegir el orden (ASC/DESC).
+    permitiendo al usuario elegir el orden (ASC/DESC) y el N° de resultados.
     """
-    print("\n--- 5. Ordenar Países por Nombre ---")
+    print("\n--- 6. Ordenar Países por Nombre ---")
     
     orden_inverso = _obtener_orden()
     
     paises_ordenados = sorted(lista_paises, 
-                            key=lambda pais: pais.get('nombre', ''), 
-                            reverse=orden_inverso)
+                              key=lambda pais: pais.get('nombre', '').lower(), 
+                              reverse=orden_inverso)
     
-    _mostrar_paises_lista(paises_ordenados)
+    # --- APLICACIÓN DE MEJORA (IDEA 2) ---
+    paises_a_mostrar = _limitar_resultados(paises_ordenados)
+    
+    mostrar_resultados(paises_a_mostrar)
 
-#-----------------------------------------------------------------------------------------------
 
-# # --- TAREA 7: ORDENAR PAÍSES POR POBLACIÓN (CON MEJORA 2: Flexible) ---(Lucas)
-
+# --- TAREA 7: ORDENAR PAÍSES POR POBLACIÓN (CON MEJORA) ---
 def ordenar_por_poblacion(lista_paises):
     """
     Muestra la lista de países ordenada por población,
-    permitiendo al usuario elegir el orden (ASC/DESC).
+    permitiendo al usuario elegir el orden (ASC/DESC) y el N° de resultados.
     """
-    print("\n--- 6. Ordenar Países por Población ---")
+    print("\n--- 7. Ordenar Países por Población ---")
     
     orden_inverso = _obtener_orden()
     
     paises_ordenados = sorted(lista_paises, 
-                            key=lambda pais: pais.get('poblacion', 0), 
-                            reverse=orden_inverso)
+                              key=lambda pais: pais.get('poblacion', 0), 
+                              reverse=orden_inverso)
     
-    _mostrar_paises_lista(paises_ordenados)
+    # --- APLICACIÓN DE MEJORA (IDEA 2) ---
+    paises_a_mostrar = _limitar_resultados(paises_ordenados)
 
-#------------------------------------------------------------------------------------------
+    mostrar_resultados(paises_a_mostrar)
 
-#Opción 8: Ordenar países por superficie.
-    #Pide al usuario si quiere ascendente o descendente, valida la entrada
-    #y muestra los resultados en pantalla.
+
+# --- TAREA 8: ORDENAR PAÍSES POR SUPERFICIE (CÓDIGO DE AMANDA ) ---
 
 def ordenar_por_superficie(paises):
+    """
+    (Esta es la función original de tu compañera, la dejamos como estaba)
+    """
+    print("\n--- 8. Ordenar Países por Superficie ---")
+    
     if not paises:
         print("No hay datos de países cargados.")
         return
@@ -67,13 +113,15 @@ def ordenar_por_superficie(paises):
         return
     
     print("\n--- Países ordenados por superficie ---")
-
+    
+    # --- CABECERA ---
+    print(f"\n{'Nombre':<45} | {'Población':<15} | {'Superficie (km²)':<20} | {'Continente':<15}")
+    print("-" * 103)
+    
+    # Imprime cada país
     for p in ordenados:
-        print(f"{p['nombre']:<15}  {p['superficie']:>12,.2f} km²  ({p['continente']})")
-
-    #:<15 significa: - : → empieza el formato - < → alinear a la izquierda15 → ocupar 15 espacios de ancho. 
-    # Esto hace que todos los nombres queden en columnas iguales.
-
-    #:>12, .2f Esto formatea el número de superficie: - > → alinear a la derecha (útil para números)
-    #12 → ocupa 12 espacios de ancho - , → muestra separadores de miles
-    #.2f → muestra 2 decimales, en formato de número flotante (float)
+        nombre = p.get('nombre', 'N/A')
+        poblacion = p.get('poblacion', 0)
+        superficie = p.get('superficie', 0)
+        continente = p.get('region', 'N/A')
+        print(f"{nombre:<45} | {poblacion:<15,d} | {superficie:<20,.2f} | {continente:<15}")
