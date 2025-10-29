@@ -67,22 +67,12 @@ def buscar_pais(paises):
 
 ##---------------------------FUNCIONAMIENTO DE LA OPCION PARA BUSCAR PAISES-----------------
 def mostrar_paises(paises):
-    # Imprime la cabecera (mantenemos f-string para alineación)
-        print(f"\n{'Nombre':<45} | {'Población':<15} | {'Capital':<25} |   {'Superficie':<15} |   {'Continente':<15} |  {'Moneda':<35}")
-        print("-" * 180)
-    # Imprime cada país
-        for pais in paises:
-            nombre = pais.get('nombre', 'N/A')
-            poblacion = pais.get('poblacion', '0')
-            capital = pais.get('capital', 'N/A')
-            superficie = pais.get('superficie', '0')
-            continente = pais.get('region', 'N/A')
-            moneda = pais.get('moneda', '0')
-            # Mantenemos f-string para formato de números y alineación
-            print(f"{nombre:<45} | {poblacion:<15} | {capital:<25} |   {superficie:<15} |   {continente:<15} |  {moneda:<35}")
-
-
-
+    """
+    Función para la Opción 1.
+    Ahora solo llama a mostrar_resultados para reutilizar código.
+    """
+    print("\n--- Lista Completa de Países ---")
+    mostrar_resultados(paises) # Reutilizamos la función corregida
 #Opción 9: Permite agregar o eliminar países de la lista, con validaciones y guardado automático al CSV.
 #Amanda
 
@@ -230,20 +220,20 @@ def _obtener_orden():
 
 #-----------------------------------------------------------------------------------------------
 
-# def mostrar_estadisticas(paises):
-#     # Opción 8: Muestra estadísticas generales de los países.
-#     # Incluye totales, promedios y países con máximos/mínimos valores.
+def mostrar_estadisticas(paises):
+    # Opción 8: Muestra estadísticas generales de los países.
+    # Incluye totales, promedios y países con máximos/mínimos valores.
 
-# ##Hacer un cambio en lo que se muestra por pantalla y hacerlo parecido o similar a las opciones 1/2 
-#     if not paises:
-#         print("No hay datos disponibles para mostrar estadísticas.")
-#         return
-#     try:
-#         total = len(paises)
-#         poblacion_total = sum(p["poblacion"] for p in paises)
-#         superficie_total = sum(p["superficie"] for p in paises)
-#         promedio_poblacion = poblacion_total / total
-#         promedio_superficie = superficie_total / total
+##Hacer un cambio en lo que se muestra por pantalla y hacerlo parecido o similar a las opciones 1/2 
+    if not paises:
+        print("No hay datos disponibles para mostrar estadísticas.")
+        return
+    try:
+        total = len(paises)
+        poblacion_total = sum(p["poblacion"] for p in paises)
+        superficie_total = sum(p["superficie"] for p in paises)
+        promedio_poblacion = poblacion_total / total
+        promedio_superficie = superficie_total / total
 
         pais_mayor_pob = max(paises, key=lambda p: p["poblacion"])
         pais_menor_pob = min(paises, key=lambda p: p["poblacion"])
@@ -261,10 +251,10 @@ def _obtener_orden():
     print(f"Superficie total: {superficie_total:,.2f} km²")
     print(f"Superficie promedio: {promedio_superficie:,.2f} km²")
 
-#     print("\nPaís con mayor población:", pais_mayor_pob["nombre"], f"({pais_mayor_pob['poblacion']:,} habitantes)")
-#     print("País con menor población:", pais_menor_pob["nombre"], f"({pais_menor_pob['poblacion']:,} habitantes)")
-#     print("País con mayor superficie:", pais_mayor_sup["nombre"], f"({pais_mayor_sup['superficie']:,.2f} km²)")
-#     print("País con menor superficie:", pais_menor_sup["nombre"], f"({pais_menor_sup['superficie']:,.2f} km²)")
+    print("\nPaís con mayor población:", pais_mayor_pob["nombre"], f"({pais_mayor_pob['poblacion']:,} habitantes)")
+    print("País con menor población:", pais_menor_pob["nombre"], f"({pais_menor_pob['poblacion']:,} habitantes)")
+    print("País con mayor superficie:", pais_mayor_sup["nombre"], f"({pais_mayor_sup['superficie']:,.2f} km²)")
+    print("País con menor superficie:", pais_menor_sup["nombre"], f"({pais_menor_sup['superficie']:,.2f} km²)")
 
 
 
@@ -276,25 +266,6 @@ def _obtener_orden():
 
 
 
-    print("-" * 75)
-
-    # Países destacados
-    print(f"{'País con mayor población':<35} | {pais_mayor_pob['nombre']:<25}")
-    print("-" * 75)
-    print(f"{'→ Habitantes':<35} | {pais_mayor_pob['poblacion']:>25,}")
-    print("-" * 75)
-    print(f"{'País con menor población':<35} | {pais_menor_pob['nombre']:<25}")
-    print("-" * 75)
-    print(f"{'→ Habitantes':<35} | {pais_menor_pob['poblacion']:>25,}")
-    print("-" * 75)
-    print(f"{'País con mayor superficie':<35} | {pais_mayor_sup['nombre']:<25}")
-    print("-" * 75)
-    print(f"{'→ Superficie (km²)':<35} | {pais_mayor_sup['superficie']:>25,.2f}")
-    print("-" * 75)
-    print(f"{'País con menor superficie':<35} | {pais_menor_sup['nombre']:<25}")
-    print("-" * 75)
-    print(f"{'→ Superficie (km²)':<35} | {pais_menor_sup['superficie']:>25,.2f}")
-    print("-" * 75)
 
 
 ##MENÚ DE OPCIONES

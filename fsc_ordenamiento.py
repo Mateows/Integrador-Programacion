@@ -49,27 +49,27 @@ def ordenar_por_superficie(paises):
         print("No hay datos de países cargados.")
         return
     
-#     #Elegimos el orden
+    #Elegimos el orden
 
-#     while True:
-#         orden = input("¿Desea orden ascendente (A) o descendente (D)? ").strip().upper()
-#         if orden in ("A", "D"):
-#             break
-#         print("Opción inválida. Ingrese 'A' o 'D'.")
+    while True:
+        orden = input("¿Desea orden ascendente (A) o descendente (D)? ").strip().upper()
+        if orden in ("A", "D"):
+            break
+        print("Opción inválida. Ingrese 'A' o 'D'.")
 
-#     #Ordena segun la eleccion.       
+    #Ordena segun la eleccion.       
 
-#     reverse = (orden == "D")
-#     try:
-#         ordenados = sorted(paises, key=lambda p: p["superficie"], reverse=reverse)
-#     except KeyError:
-#         print("Error: los datos de superficie no están correctamente definidos.")
-#         return
+    reverse = (orden == "D")
+    try:
+        ordenados = sorted(paises, key=lambda p: p["superficie"], reverse=reverse)
+    except KeyError:
+        print("Error: los datos de superficie no están correctamente definidos.")
+        return
     
-#     print("\n--- Países ordenados por superficie ---")
+    print("\n--- Países ordenados por superficie ---")
 
-#     for p in ordenados:
-#         print(f"{p['nombre']:<15}  {p['superficie']:>12,.2f} km²  ({p['continente']})")
+    for p in ordenados:
+        print(f"{p['nombre']:<15}  {p['superficie']:>12,.2f} km²  ({p['continente']})")
 
     #:<15 significa: - : → empieza el formato - < → alinear a la izquierda15 → ocupar 15 espacios de ancho. 
     # Esto hace que todos los nombres queden en columnas iguales.
