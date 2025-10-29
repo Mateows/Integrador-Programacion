@@ -56,6 +56,7 @@ def cargar_paises():
         with open(ARCHIVO_CSV, newline="", encoding="utf-8") as archivo:
             lector = csv.DictReader(archivo)
             for fila in lector:
+<<<<<<< Updated upstream
                 # usa exactamente los nombres de columnas del CSV
                 pais = {
                     "nombre": fila.get("nombre", "N/A"),
@@ -75,6 +76,25 @@ def cargar_paises():
                 paises.append(pais)
     except FileNotFoundError:
         print(f"❌ Error: No se encontró el archivo en la ruta: '{ARCHIVO_CSV}'")
+=======
+                try:
+                    pais = {
+                        "nombre": fila["nombre"],
+                        "capital": fila["capital"],
+                        "region": fila["region"],
+                        "poblacion": fila["poblacion"],
+                        "lenguaje": fila["lenguaje"],
+                        "tipo_de_moneda": fila["moneda"],
+                        "superficie": fila["superficie"]
+                    }
+                    paises.append(pais)
+                except ValueError:
+                    print(f"⚠️ Error: Datos inválidos en la fila: {fila}. Saltando fila.")
+                except KeyError:
+                    print(f"⚠️ Error: Faltan columnas en el CSV. Fila: {fila}. Saltando fila.")
+    except FileNotFoundError:
+        print(f"❌ Error: No se encontró el archivo en la ruta: {"paises.csv"}")
+>>>>>>> Stashed changes
     except Exception as e:
         print(f"❌ Ocurrió un error inesperado al cargar el archivo: {e}")
     return paises
