@@ -26,7 +26,7 @@ Ranking "Top N" (Opciones 6 y 7): Al ordenar países por nombre o población, el
 
 Búsqueda Anidada (Opciones 4 y 5): Después de realizar un filtro (por población o superficie), el usuario puede realizar una segunda búsqueda por nombre dentro de esos resultados, permitiendo refinar las consultas de forma interactiva.
 
-🛠️ Instalación y Ejecución:
+🛠️ Instalación, Actualización y Ejecución:
 Para correr este proyecto en tu máquina local, seguí estos pasos.
 
 1. Prerrequisitos
@@ -35,24 +35,71 @@ Tener Python 2 ó 3 instalado.
 2. Dependencias
 Este proyecto depende de la biblioteca (requests) para realizar las consultas a la API. Para instalarla, abrí tu terminal y ejecutá:
 
-pip install requests (Copia y pega esto) -> En caso de utilizar la versión de Python 2
-pip3 install request (Copia y pega esto) -> En caso de utilizar la versión de Python 3
+##  Instalación
+
+**Para Python 2:**
+```bash
+pip install requests
+```
 
 
-En caso de que el comando "pip" no se reconozca:
-La solución es la siguiente:
+**Para Python 3:**
+```bash
+pip3 install requests
+```
 
+
+
+---
+
+##  En caso de que el comando `pip` no se reconozca
+
+Ejecuta los siguientes comandos:
+
+```bash
 python -m ensurepip --upgrade
-Y luego:
+```
+
+Luego instala `requests` con:
+
+```bash
 python -m pip install requests
+```
+
+---
+
+##  Actualización de la biblioteca `requests`
+
+**Para Python 2:**
+```bash
+pip install --upgrade requests
+```
 
 
-Para actualizar la biblioteca de requests(en caso de ya tenerla instalada)
-pip install upgrade requests (Copia y pega esto) -> En caso de utilizar la version de Python 2
-pip3 install upgrade requests (Copia y pega esto) -> En caso de utilizar la version de Python 3
+**Para Python 3:**
+```bash
+pip3 install --upgrade requests
+```
 
-¿Como saber que version de Python estoy utilizando?
-Desde la terminal de Windows, ejecuta el siguiente comando: python --version, en caso de que no funcione ese, proba con este otro: python3 --version
+
+---
+
+##  Cómo saber qué versión de Python estás utilizando
+
+Desde la terminal de Windows, ejecuta alguno de los siguientes comandos:
+
+```bash
+python --version
+```
+
+O, si no funciona el anterior:
+
+```bash
+python3 --version
+```
+---
+
+  **Consejo:** asegurate de tener siempre actualizada tu versión de `pip` antes de instalar o actualizar bibliotecas.
 
 
 3. Ejecución
