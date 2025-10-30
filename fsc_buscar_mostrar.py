@@ -34,7 +34,7 @@ def mostrar_resultados(resultados):
     # ',d'   -> entero con separador de miles.
     # ',.2f' -> flotante con separador de miles y 2 decimales.
     print(f"\n{'Nombre':<45} | {'Población':<15} | {'Capital':<25} |   {'Superficie (km²)':<20} |   {'Continente':<15} |  {'Moneda':<80}")
-    print("-" * 218)
+    print("-" * 150)
 
     for pais in resultados:
         # --- CORRECCIÓN DE CLAVES Y VALORES POR DEFECTO ---

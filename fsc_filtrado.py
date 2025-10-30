@@ -164,6 +164,7 @@ def filtrar_por_poblacion(paises):
                 sub_resultados = buscar_pais(resultados) # Reutilizamos buscar_pais con la lista filtrada
                 mostrar_resultados(sub_resultados) # Reutilizamos mostrar_resultados
                 print("--- Fin de la sub-búsqueda ---")
+                break
             
             elif respuesta_buscar == 'N':
                 break # Salir del bucle de "buscar dentro"
