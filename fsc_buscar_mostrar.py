@@ -6,7 +6,7 @@ import csv
 
 
 def normalizar_palabra(texto):
-   # Convierte texto a minúsculas y elimina acentos para búsquedas flexibles.
+# Convierte texto a minúsculas y elimina acentos para búsquedas flexibles.
     texto = texto.lower()
     # Normaliza a 'NFKD' para separar caracteres base de diacríticos (acentos)
     texto = unicodedata.normalize('NFKD', texto)
@@ -79,6 +79,8 @@ def mostrar_paises(paises):
     """
     print("\n--- Lista Completa de Países ---")
     mostrar_resultados(paises) # Reutilizamos la función corregida
+
+    
 #Opción 9: Permite agregar o eliminar países de la lista, con validaciones y guardado automático al CSV.
 #Amanda
 def agregar_o_eliminar_pais(paises, ruta_csv="paises.csv"):
@@ -277,11 +279,6 @@ def mostrar_estadisticas(paises):
     print("País con menor población:", pais_menor_pob["nombre"], f"({pais_menor_pob['poblacion']:,} habitantes)")
     print("País con mayor superficie:", pais_mayor_sup["nombre"], f"({pais_mayor_sup['superficie']:,.2f} km²)")
     print("País con menor superficie:", pais_menor_sup["nombre"], f"({pais_menor_sup['superficie']:,.2f} km²)")
-
-
-
-
-
 
 
 

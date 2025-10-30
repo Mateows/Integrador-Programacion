@@ -54,8 +54,8 @@ def ordenar_por_nombre(lista_paises):
     orden_inverso = _obtener_orden()
     
     paises_ordenados = sorted(lista_paises, 
-                              key=lambda pais: pais.get('nombre', '').lower(), 
-                              reverse=orden_inverso)
+                            key=lambda pais: pais.get('nombre', '').lower(), 
+                            reverse=orden_inverso)
     
     # --- APLICACIÓN DE MEJORA (IDEA 2) ---
     paises_a_mostrar = _limitar_resultados(paises_ordenados)
@@ -74,8 +74,8 @@ def ordenar_por_poblacion(lista_paises):
     orden_inverso = _obtener_orden()
     
     paises_ordenados = sorted(lista_paises, 
-                              key=lambda pais: pais.get('poblacion', 0), 
-                              reverse=orden_inverso)
+                            key=lambda pais: pais.get('poblacion', 0), 
+                            reverse=orden_inverso)
     
     # --- APLICACIÓN DE MEJORA (IDEA 2) ---
     paises_a_mostrar = _limitar_resultados(paises_ordenados)
@@ -117,7 +117,7 @@ def ordenar_por_superficie(paises):
     print(f"{'Nombre':<45} | {'Superficie (Km²)':>18} | {'Continente/Región':<20}")
     print("-" * 80)
     
-         # Filas
+        # Filas
     for p in ordenados:
         nombre = p.get("nombre", "Desconocido")
         superficie = p.get("superficie", 0)

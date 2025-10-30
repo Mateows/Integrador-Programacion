@@ -1,4 +1,40 @@
-# # --- TAREA 4: FILTRAR POR SUPERFICIE (CON MEJORA 1: Robusta) --- (Lucas)
+
+import Cargar_API_y_CSV
+from fsc_buscar_mostrar import mostrar_resultados, buscar_pais, _mostrar_paises_lista
+
+
+
+
+
+# #Funcion para filtrar paises por continente
+def filtrar_por_continente(paises):
+    #Buscamos el continente que el usuario ingrese
+    continente = input("Ingrese el continente para filtar: ").strip().title()
+    resultados = []
+    #Recorremos el archivo, si lo que se ingreso es igual a algún continente, lo almacenamos en resultados
+    for pais in paises:
+        if pais["region"] == continente:
+            resultados.append(pais)
+
+# #En caso de que se guarde algun continente en resultados o no, mostramos el mensaje correspondiente
+    if resultados:
+        print(f"\n{'Nombre':<45} | {'Población':<15} | {'Superficie (km²)':<20} | {'Continente':<20}")
+        print("-" * 80)
+        for pais in resultados:
+            nombre = pais.get('nombre', 'N/A')
+            poblacion = pais.get('poblacion', 0)
+            superficie = pais.get('superficie', 0)
+            continente = pais.get('region', 'N/A')
+            # Mantenemos f-string para formato de números y alineación
+            print(f"{nombre:<45} | {poblacion:<15,d} | {superficie:<20,.2f} | {continente:<20}")
+    else:
+        print("No hay coincidencias con el continente ingresado")
+
+#-----------------------------------------------------------------------------------------
+
+
+
+
 def filtrar_por_superficie(paises):
     """
     Filtra la lista de países por superficie, con validaciones robustas
@@ -66,44 +102,13 @@ def filtrar_por_superficie(paises):
         
         # (Manejamos el caso de que la lista original estuviera vacía)
         elif not paises_filtrados and criterio: 
-             pass # El 'mostrar_resultados' ya habrá dicho "No se encontraron coincidencias"
+            pass # El 'mostrar_resultados' ya habrá dicho "No se encontraron coincidencias"
         
     except Exception as e:
         print(f"Ocurrió un error inesperado: {e}")
 
 #--------------------------------------------------------------------------------------------------------------------------
 
-
-# #Funcion para filtrar paises por continente
-import Cargar_API_y_CSV
-from fsc_buscar_mostrar import _mostrar_paises_lista
-
-from fsc_buscar_mostrar import mostrar_resultados, buscar_pais
-
-def filtrar_por_continente(paises):
-    #Buscamos el continente que el usuario ingrese
-    continente = input("Ingrese el continente para filtar: ").strip().title()
-    resultados = []
-    #Recorremos el archivo, si lo que se ingreso es igual a algún continente, lo almacenamos en resultados
-    for pais in paises:
-        if pais["continente"] == continente:
-            resultados.append(pais)
-
-# #En caso de que se guarde algun continente en resultados o no, mostramos el mensaje correspondiente
-    if resultados:
-        print(f"\n{'Nombre':<30} | {'Población':<15} | {'Superficie (km²)':<20}")
-        print("-" * 80)
-        for pais in resultados:
-            nombre = pais.get('Nombre', 'N/A')
-            poblacion = pais.get('Población', 0)
-            superficie = pais.get('superficie', 0)
-            continente = pais.get('Región', 'N/A')
-            # Mantenemos f-string para formato de números y alineación
-            print(f"{nombre:<30} | {poblacion:<15,d} | {superficie:<20,.2f}")
-    else:
-        print("No hay coincidencias con el continente ingresado")
-
-#-----------------------------------------------------------------------------------------
 
 # #Función para filtrar países por población
 def filtrar_por_poblacion(paises):
