@@ -30,12 +30,30 @@ Búsqueda Anidada (Opciones 4 y 5): Después de realizar un filtro (por poblaci�
 Para correr este proyecto en tu máquina local, seguí estos pasos.
 
 1. Prerrequisitos
-Tener Python 3 instalado.
+Tener Python 2 ó 3 instalado.
 
 2. Dependencias
 Este proyecto depende de la biblioteca (requests) para realizar las consultas a la API. Para instalarla, abrí tu terminal y ejecutá:
 
-#pip install requests (Copia y pega esto)
+pip install requests (Copia y pega esto) -> En caso de utilizar la versión de Python 2
+pip3 install request (Copia y pega esto) -> En caso de utilizar la versión de Python 3
+
+
+En caso de que el comando "pip" no se reconozca:
+La solución es la siguiente:
+
+python -m ensurepip --upgrade
+Y luego:
+python -m pip install requests
+
+
+Para actualizar la biblioteca de requests(en caso de ya tenerla instalada)
+pip install upgrade requests (Copia y pega esto) -> En caso de utilizar la version de Python 2
+pip3 install upgrade requests (Copia y pega esto) -> En caso de utilizar la version de Python 3
+
+¿Como saber que version de Python estoy utilizando?
+Desde la terminal de Windows, ejecuta el siguiente comando: python --version, en caso de que no funcione ese, proba con este otro: python3 --version
+
 
 3. Ejecución
 Una vez instalada la dependencia, simplemente ejecutá el script principal desde tu terminal:
