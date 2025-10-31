@@ -1,12 +1,19 @@
 import csv
 import Cargar_API_y_CSV
 
+
+
+
+#Muestra las estadisticas generales del CSV
 def mostrar_estadisticas(paises):
+    if not paises:
+        print("No hay paises cargados aun")
+        return
+
 
     if not paises:
         print("No hay datos disponibles para mostrar estadísticas.")
         return
-
     try:
         total = len(paises)
         poblacion_total = sum(p["poblacion"] for p in paises)

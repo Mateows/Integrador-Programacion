@@ -8,6 +8,9 @@ from fsc_buscar_mostrar import mostrar_resultados, buscar_pais, _mostrar_paises_
 
 # #Funcion para filtrar paises por continente
 def filtrar_por_continente(paises):
+    if not paises:
+        print("No hay paises cargados aún")
+        return
     #Buscamos el continente que el usuario ingrese
     continente = input("Ingrese el continente para filtar: ").strip().title()
     resultados = []
@@ -18,7 +21,7 @@ def filtrar_por_continente(paises):
 
 # #En caso de que se guarde algun continente en resultados o no, mostramos el mensaje correspondiente
     if resultados:
-        print(f"\n{'Nombre':<45} | {'Población':<15} | {'Superficie (km²)':<20} | {'Continente':<20}")
+        print(f"\n{'País':<45} | {'Población':<15} | {'Superficie (km²)':<20} | {'Continente':<20}")
         print("-" * 80)
         for pais in resultados:
             nombre = pais.get('nombre', 'N/A')
@@ -36,13 +39,15 @@ def filtrar_por_continente(paises):
 
 
 def filtrar_por_superficie(paises):
+    if not paises:
+        print("No hay paises cargados aún")
+        return
     """
     Filtra la lista de países por superficie, con validaciones robustas
     Permite una sub-búsqueda por nombre dentro de los resultados.
     """
     print("\n--- 5. Filtrar Países por Superficie ---")
     try:
-        # (Validación de superficie...)
         superficie_limite = -1
         while superficie_limite <= 0:
             try:
@@ -59,7 +64,6 @@ def filtrar_por_superficie(paises):
                 print("Error: Entrada inválida. Por favor, ingrese un número.")
                 superficie_limite = -1
         
-        # (Validación de criterio...)
         criterio = ""
         while criterio not in ('>', '<'):
             criterio = input("¿Mostrar países 'mayor que' (>) o 'menor que' (<) este valor? ").strip().lower()
@@ -82,7 +86,6 @@ def filtrar_por_superficie(paises):
         
         mostrar_resultados(paises_filtrados)
         
-        # --- INICIO DE MEJORA (IDEA 3): BÚSQUEDA ANIDADA ---
         if paises_filtrados: # Solo preguntar si hay resultados
             while True:
                 respuesta_buscar = input(f"\n¿Desea buscar por nombre DENTRO de estos {len(paises_filtrados)} resultados? (S/N): ").strip().upper()
@@ -98,7 +101,6 @@ def filtrar_por_superficie(paises):
                 
                 else:
                     print("Opción inválida. Ingrese 'S' o 'N'.")
-        # --- FIN DE MEJORA ---
         
         # (Manejamos el caso de que la lista original estuviera vacía)
         elif not paises_filtrados and criterio: 
@@ -112,6 +114,9 @@ def filtrar_por_superficie(paises):
 
 # #Función para filtrar países por población
 def filtrar_por_poblacion(paises):
+    if not paises:
+        print("No hay paises cargados aún")
+        return
     """
     Filtra países por un rango de población (mínimo y máximo).
     Permite una sub-búsqueda por nombre dentro de los resultados.

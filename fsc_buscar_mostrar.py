@@ -27,23 +27,21 @@ def mostrar_resultados(resultados):
     if not resultados:
         print("\nNo se encontraron coincidencias.")
         return
-
-    # --- CABECERA CORREGIDA ---
-    # Usamos los anchos que ya probamos que funcionan
-    # Aplicamos formato de números:
+    
     # ',d'   -> entero con separador de miles.
     # ',.2f' -> flotante con separador de miles y 2 decimales.
-    print(f"\n{'Nombre':<45} | {'Población':<15} | {'Capital':<25} |   {'Superficie (km²)':<20} |   {'Continente':<15} |  {'Moneda':<80}")
+    print(f"\n{'País':<45} | {'Población':<15} | {'Capital':<25} |   {'Superficie (km²)':<20} |   {'Continente':<15} |  {'Moneda':<80}")
     print("-" * 150)
 
     for pais in resultados:
         # --- CORRECCIÓN DE CLAVES Y VALORES POR DEFECTO ---
         nombre = pais.get('nombre', 'N/A')
         poblacion = pais.get('poblacion', 0)
-        capital = pais.get('capital', 'N/A')     # CORREGIDO: Usar 'N/A', no 0
-        superficie = pais.get('superficie', 0.0) # CORREGIDO: Usar 'superficie', no 'area'
+        capital = pais.get('capital', 'N/A')     
+        superficie = pais.get('superficie', 0.0) 
         continente = pais.get('region', 'N/A')
-        moneda = pais.get('moneda', 'N/A')       # CORREGIDO: Usar 'moneda', no 'currencies'
+        moneda = pais.get('moneda', 'N/A')
+        lenguaje = pais.get("lenguaje", "N/A")       
 
         # --- FILA DE DATOS CON FORMATO ---
         # Aplicamos formato de números
@@ -51,10 +49,12 @@ def mostrar_resultados(resultados):
 
 
 
-
 #-------------------------------------------------------------------------------------------------
 
 def buscar_pais(paises):
+    if not paises:
+        print("No hay paisea cargados aun")
+        return
     #Buscamos el pais que el usuario ingrese
     pais_a_buscar = input("Ingrese el nombre del país a buscar: ").strip().lower()
     pais_a_buscar = normalizar_palabra(pais_a_buscar)
@@ -65,7 +65,7 @@ def buscar_pais(paises):
         nombre_normalizado = normalizar_palabra(pais["nombre"])
         if pais_a_buscar in nombre_normalizado:
             resultados.append(pais)
-    return resultados
+    mostrar_resultados(resultados)
 
 
 
@@ -73,6 +73,9 @@ def buscar_pais(paises):
 
 ##---------------------------FUNCIONAMIENTO DE LA OPCION PARA BUSCAR PAISES-----------------
 def mostrar_paises(paises):
+    if not paises:
+        print("No hay paises cargados aun")
+        return
     """
     Función para la Opción 1.
     Ahora solo llama a mostrar_resultados para reutilizar código.
@@ -80,134 +83,26 @@ def mostrar_paises(paises):
     print("\n--- Lista Completa de Países ---")
     mostrar_resultados(paises) # Reutilizamos la función corregida
 
-    
-#Opción 9: Permite agregar o eliminar países de la lista, con validaciones y guardado automático al CSV.
-#Amanda
-def agregar_o_eliminar_pais(paises, ruta_csv="paises.csv"):
-    if not isinstance(paises, list):
-        print("Error: la lista de países no es válida.")
-        return
-
-    while True:
-        opcion = input("\n¿Desea (A)gregar, (E)liminar o (V)olver al menú? ").strip().upper()
-        if opcion in ("A", "E", "V"):
-            break
-        print("Opción inválida. Ingrese 'A', 'E' o 'V'.")
-
-    # --- VOLVER AL MENÚ ---
-    if opcion == "V":
-        return
-
-    # --- AGREGAR PAÍS ---
-    if opcion == "A":
-        nombre = input("Ingrese el nombre del país: ").strip()
-        if not nombre:
-            print("El nombre no puede estar vacío.")
-            return
-        
-        # Evitar duplicados
-        for p in paises:
-            if p["nombre"].lower() == nombre.lower():
-                print("Ya existe un país con ese nombre.")
-                return
-
-        capital = input("Ingrese la capital: ").strip()
-        if not capital:
-            capital = "Desconocida"
-
-        region = input("Ingrese la región o continente: ").strip()
-        if not region:
-            region = "Desconocida"
-
-        lenguaje = input("Ingrese el lenguaje principal: ").strip()
-        if not lenguaje:
-            lenguaje = "Desconocido"
-
-        moneda = input("Ingrese la moneda oficial: ").strip()
-        if not moneda:
-            moneda = "Desconocida"
-
-        try:
-            poblacion = int(input("Ingrese la población (entero positivo): ").replace(",", ""))
-            if poblacion < 0:
-                raise ValueError
-        except ValueError:
-            print("Error: población inválida.")
-            return
-
-        try:
-            superficie = float(input("Ingrese la superficie (en km²): ").replace(",", "."))
-            if superficie < 0:
-                raise ValueError
-        except ValueError:
-            print("Error: superficie inválida.")
-            return
-
-        # Crear el nuevo registro
-        nuevo = {
-            "nombre": nombre,
-            "capital": capital,
-            "region": region,
-            "poblacion": poblacion,
-            "lenguaje": lenguaje,
-            "moneda": moneda,
-            "superficie": superficie
-        }
-
-        paises.append(nuevo)
-        print(f"País '{nombre}' agregado correctamente.")
-
-        # Guardar cambios
-        _guardar_csv(paises, ruta_csv)
-
-    # --- ELIMINAR PAÍS ---
-    elif opcion == "E":
-        nombre = input("Ingrese el nombre del país a eliminar: ").strip()
-        if not nombre:
-            print("Debe ingresar un nombre.")
-            return
-
-        encontrados = [p for p in paises if p["nombre"].lower() == nombre.lower()]
-        if not encontrados:
-            print("No se encontró el país.")
-            return
-
-        confirm = input(f"¿Confirma eliminar '{nombre}'? (S/N): ").strip().upper()
-        if confirm != "S":
-            print("Operación cancelada.")
-            return
-
-        paises[:] = [p for p in paises if p["nombre"].lower() != nombre.lower()]
-        print(f"País '{nombre}' eliminado correctamente.")
-
-        # Guardar cambios
-        _guardar_csv(paises, ruta_csv)
 
 
-# --- FUNCIÓN AUXILIAR ---
-def _guardar_csv(paises, ruta_csv):
-    """Guarda la lista actualizada de países en el archivo CSV."""
+
+def mostrar_idiomas(paises):
     if not paises:
-        print("No hay datos para guardar.")
+        print("No hay paises cargados aun")
         return
+    print(f"\n{'País':<50} | {"Lengua Natal":<55}")
+    print("-" * 135)
+    for pais in paises:
 
-    try:
-        fieldnames = ["nombre", "capital", "region", "poblacion", "lenguaje", "moneda", "superficie"]
-        with open(ruta_csv, "w", newline="", encoding="utf-8") as archivo:
-            escritor = csv.DictWriter(archivo, fieldnames=fieldnames)
-            escritor.writeheader()
-            for p in paises:
-                escritor.writerow(p)
-        print(f"Cambios guardados correctamente en '{ruta_csv}'.")
-    except Exception as e:
-        print(f"No se pudo guardar el archivo CSV: {e}")
+        nombre = pais.get('nombre', 'N/A')
+        lenguaje = pais.get("lenguaje", "N/A")       
 
-
-
-#-----------------------------------------------------------------------------------------------
+        # --- FILA DE DATOS CON FORMATO ---
+        # Aplicamos formato de números
+        print(f"{nombre:<50} | {lenguaje:<55}")
 
 ###########################################################OPCIONES 4,5 Y 6####################################################################################################################
-def _mostrar_paises_lista(lista_paises):  #(Lucas)
+def _mostrar_paises_lista(lista_paises):
     """
     Una función interna de ayuda para mostrar una lista de países de forma prolija.
     """
@@ -216,18 +111,18 @@ def _mostrar_paises_lista(lista_paises):  #(Lucas)
         return
 
     # Imprime la cabecera (mantenemos f-string para alineación)
-    print(f"\n{'Nombre':<30} | {'Población':<15} | {'Superficie (km²)':<20}")
+    print(f"\n{'País':<30} | {'Población':<15} | {'Superficie (km²)':<20}")
     print("-" * 70)
     
     # Imprime cada país
     for pais in lista_paises:
-        nombre = pais.get('Nombre', 'N/A')
-        poblacion = pais.get('Población', 0)
+        nombre = pais.get('nombre', 'N/A')
+        poblacion = pais.get('poblacion', 0)
         superficie = pais.get('superficie', 0)
         # Mantenemos f-string para formato de números y alineación
         print(f"{nombre:<30} | {poblacion:<15,d} | {superficie:<20,.2f}")
 
-# --- MEJORA 2: FUNCIÓN HELPER REUTILIZABLE (Flexible) ---
+
 def _obtener_orden():
     """
     Función auxiliar para preguntar al usuario el orden (Asc/Desc).
@@ -244,60 +139,18 @@ def _obtener_orden():
 
 #-----------------------------------------------------------------------------------------------
 
-def mostrar_estadisticas(paises):
-    # Opción 8: Muestra estadísticas generales de los países.
-    # Incluye totales, promedios y países con máximos/mínimos valores.
-
-##Hacer un cambio en lo que se muestra por pantalla y hacerlo parecido o similar a las opciones 1/2 
-    if not paises:
-        print("No hay datos disponibles para mostrar estadísticas.")
-        return
-    try:
-        total = len(paises)
-        poblacion_total = sum(p["poblacion"] for p in paises)
-        superficie_total = sum(p["superficie"] for p in paises)
-        promedio_poblacion = poblacion_total / total
-        promedio_superficie = superficie_total / total
-
-        pais_mayor_pob = max(paises, key=lambda p: p["poblacion"])
-        pais_menor_pob = min(paises, key=lambda p: p["poblacion"])
-        pais_mayor_sup = max(paises, key=lambda p: p["superficie"])
-        pais_menor_sup = min(paises, key=lambda p: p["superficie"])
-
-    except(KeyError, ZeroDivisionError, ValueError) as e:
-        print(f"Ocurrió un error al calcular las estadísticas: {e}")
-        return
-    
-    print("\n--- Estadísticas Generales de Países ---")
-    print(f"Cantidad total de países: {total}")
-    print(f"Población total: {poblacion_total:,}")
-    print(f"Población promedio: {promedio_poblacion:,.2f}")
-    print(f"Superficie total: {superficie_total:,.2f} km²")
-    print(f"Superficie promedio: {promedio_superficie:,.2f} km²")
-
-    print("\nPaís con mayor población:", pais_mayor_pob["nombre"], f"({pais_mayor_pob['poblacion']:,} habitantes)")
-    print("País con menor población:", pais_menor_pob["nombre"], f"({pais_menor_pob['poblacion']:,} habitantes)")
-    print("País con mayor superficie:", pais_mayor_sup["nombre"], f"({pais_mayor_sup['superficie']:,.2f} km²)")
-    print("País con menor superficie:", pais_menor_sup["nombre"], f"({pais_menor_sup['superficie']:,.2f} km²)")
-
-
-
-
-
-
-
-
 ##MENÚ DE OPCIONES
 def mostrar_menu():
     print("\n------ MENÚ PRINCIPAL ------")
     print("1. Mostrar paises")
-    print("2. Buscar pais por nombre")#Mateo
-    print("3. Filtrar países por continente")#Mateo
-    print("4. Filtrar países por población")#Mateo
-    print("5. Filtar países por superficie")#Lucas
-    print("6. Ordenar países por nombre")#Lucas
-    print("7. Ordenar países por población")#Lucass
-    print("8 Ordenar países por superficie")#Amanda
-    print("9. Mostrar estadísticas")#Amanda
-    print("10. Agregar/Eliminar país")#Amanda
+    print("2. Buscar pais por nombre")
+    print("3. Filtrar países por continente")
+    print("4. Filtrar países por población")
+    print("5. Filtar países por superficie")
+    print("6. Ordenar países por nombre")
+    print("7. Ordenar países por población")
+    print("8 Ordenar países por superficie")
+    print("9. Mostrar estadísticas")
+    print("10. Agregar/Eliminar país")
+    print("11. Mostrar paises y sus idiomas")
     print("11. Salir")
