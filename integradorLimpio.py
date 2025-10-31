@@ -5,7 +5,7 @@ from fsc_buscar_mostrar import mostrar_paises, buscar_pais, mostrar_resultados, 
 from fsc_filtrado import filtrar_por_continente, filtrar_por_poblacion, filtrar_por_superficie
 from fsc_ordenamiento import ordenar_por_nombre, ordenar_por_poblacion, ordenar_por_superficie
 from fsc_estadisticas import mostrar_estadisticas
-from fsc_agregar_borrar_paises import agregar_o_eliminar_pais
+from fsc_agregar_borrar_paises import agregar_editar_eliminar_pais
 
 
 
@@ -52,7 +52,7 @@ def ejecutar_programa():
                 mostrar_estadisticas(paises)
             case "10":
                 #Agrega un nuevo pais o lo borra -> Se llama desde fsc_agregar_borrar_pais
-                agregar_o_eliminar_pais(paises, "paises.csv")
+                agregar_editar_eliminar_pais(paises, "paises.csv")
             case "11":
                 mostrar_idiomas(paises)
             case "12":

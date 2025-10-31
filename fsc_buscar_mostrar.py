@@ -151,6 +151,6 @@ def mostrar_menu():
     print("7. Ordenar países por población")
     print("8 Ordenar países por superficie")
     print("9. Mostrar estadísticas")
-    print("10. Agregar/Eliminar país")
+    print("10. Agregar/Eliminar/Editar país")
     print("11. Mostrar paises y sus idiomas")
     print("11. Salir")
