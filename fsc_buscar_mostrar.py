@@ -50,7 +50,7 @@ def mostrar_resultados(resultados):
 
 
 #-------------------------------------------------------------------------------------------------
-
+##Funcion para buscar paises por coincidencia parcial o total
 def buscar_pais(paises):
     if not paises:
         print("No hay paisea cargados aun")
