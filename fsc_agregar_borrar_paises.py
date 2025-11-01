@@ -1,4 +1,5 @@
 import csv
+from fsc_buscar_mostrar import normalizar_palabra
 
 def agregar_editar_eliminar_pais(paises, ruta_csv="paises.csv"):
     if not isinstance(paises, list):
@@ -32,6 +33,7 @@ def agregar_editar_eliminar_pais(paises, ruta_csv="paises.csv"):
             # ===== VALIDACIÓN DE NOMBRE =====
             while True:
                 nombre = input("Ingrese el nombre del país: ").strip().title()
+                nombre = normalizar_palabra(nombre)
                 if not nombre:
                     print("El nombre no puede estar vacío.")
                     continue
@@ -89,7 +91,7 @@ def agregar_editar_eliminar_pais(paises, ruta_csv="paises.csv"):
             while True:
                 try:
                     superficie = float(input("Ingrese la superficie (en km²): ").replace(",", "."))
-                    if superficie < 0:
+                    if superficie <= 0:
                         raise ValueError
                     break
                 except ValueError:
