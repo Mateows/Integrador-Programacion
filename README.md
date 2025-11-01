@@ -27,8 +27,7 @@ Ranking "Top N" (Opciones 6 y 7): Al ordenar países por nombre o población, el
 Búsqueda Anidada (Opciones 4 y 5): Después de realizar un filtro (por población o superficie), el usuario puede realizar una segunda búsqueda por nombre dentro de esos resultados, permitiendo refinar las consultas de forma interactiva.
 
 🛠️ Instalación, Actualización y Ejecución:
-Para correr este proyecto en tu máquina local, seguí estos pasos.
-IMPORTANTE: El cmd o consola de Windows DEBE ejecutarse como Administrador!
+Para correr este proyecto en tu máquina local, seguí estos pasos. IMPORTANTE: El cmd o consola de Windows DEBE ejecutarse como Administrador!
 
 1. Prerrequisitos
 Tener Python 2 ó 3 instalado.
