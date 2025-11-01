@@ -28,6 +28,7 @@ Búsqueda Anidada (Opciones 4 y 5): Después de realizar un filtro (por poblaci�
 
 🛠️ Instalación, Actualización y Ejecución:
 Para correr este proyecto en tu máquina local, seguí estos pasos.
+IMPORTANTE: El cmd o consola de Windows DEBE ejecutarse como Administrador!
 
 1. Prerrequisitos
 Tener Python 2 ó 3 instalado.
