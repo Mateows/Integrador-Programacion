@@ -1,0 +1,251 @@
+nombre,capital,region,poblacion,lenguaje,moneda,superficie
+Syria,Damascus,Asia,25620000,Arabic,Syrian pound (SYP),185180.0
+New Zealand,Wellington,Oceania,5324700,"English, Māori, New Zealand Sign Language",New Zealand dollar (NZD),268838.0
+Brunei,Bandar Seri Begawan,Asia,455500,Malay,"Brunei dollar (BND), Singapore dollar (SGD)",5765.0
+British Indian Ocean Territory,Diego Garcia,Africa,0,English,United States dollar (USD),60.0
+Kenya,Nairobi,Africa,53330978,"English, Swahili",Kenyan shilling (KES),580367.0
+Palau,Ngerulmud,Oceania,16733,"English, Palauan",United States dollar (USD),459.0
+Oman,Muscat,Asia,5343630,Arabic,Omani rial (OMR),309500.0
+Mexico,Mexico City,Americas,130575786,Spanish,Mexican peso (MXN),1964375.0
+Palestine,Ramallah,Asia,5483450,Arabic,"Egyptian pound (EGP), Israeli new shekel (ILS), Jordanian dinar (JOD)",6220.0
+Turks and Caicos Islands,Cockburn Town,Americas,50828,English,United States dollar (USD),948.0
+Central African Republic,Bangui,Africa,6470307,"French, Sango",Central African CFA franc (XAF),622984.0
+Saint Kitts and Nevis,Basseterre,Americas,51320,English,Eastern Caribbean dollar (XCD),261.0
+South Sudan,Juba,Africa,15786898,English,South Sudanese pound (SSP),619745.0
+Ukraine,Kyiv,Europe,32862000,Ukrainian,Ukrainian hryvnia (UAH),603550.0
+Saint Barthélemy,Gustavia,Americas,10562,French,Euro (EUR),21.0
+Netherlands,Amsterdam,Europe,18100436,Dutch,Euro (EUR),41865.0
+Tanzania,Dodoma,Africa,68153004,"English, Swahili",Tanzanian shilling (TZS),947303.0
+Czechia,Prague,Europe,10882341,"Czech, Slovak",Czech koruna (CZK),78865.0
+Belarus,Minsk,Europe,9109280,"Belarusian, Russian",Belarusian ruble (BYN),207600.0
+Yemen,Sana'a,Asia,32684503,Arabic,Yemeni rial (YER),527968.0
+Slovenia,Ljubljana,Europe,2130638,Slovene,Euro (EUR),20273.0
+Tokelau,Fakaofo,Oceania,2608,"English, Samoan, Tokelauan",New Zealand dollar (NZD),12.0
+Nigeria,Abuja,Africa,223800000,English,Nigerian naira (NGN),923768.0
+Réunion,Saint-Denis,Africa,896175,French,Euro (EUR),2511.0
+Guadeloupe,Basse-Terre,Americas,378561,French,Euro (EUR),1628.0
+Hungary,Budapest,Europe,9539502,Hungarian,Hungarian forint (HUF),93028.0
+Heard Island and McDonald Islands,Sin capital,Antarctic,0,English,Sin dato,412.0
+Eswatini,Mbabane,Africa,1235549,"English, Swazi","Swazi lilangeni (SZL), South African rand (ZAR)",17364.0
+Comoros,Moroni,Africa,919901,"Arabic, French, Comorian",Comorian franc (KMF),1862.0
+India,New Delhi,Asia,1417492000,"English, Hindi, Tamil",Indian rupee (INR),3287263.0
+Cocos (Keeling) Islands,West Island,Oceania,593,English,Australian dollar (AUD),14.0
+United Kingdom,London,Europe,69281437,English,British pound (GBP),244376.0
+Angola,Luanda,Africa,36170961,Portuguese,Angolan kwanza (AOA),1246700.0
+Macau,Sin capital,Asia,685900,"Portuguese, Chinese",Macanese pataca (MOP),30.0
+Costa Rica,San José,Americas,5309625,Spanish,Costa Rican colón (CRC),51100.0
+Niue,Alofi,Oceania,1681,"English, Niuean",New Zealand dollar (NZD),260.0
+Cook Islands,Avarua,Oceania,15040,"English, Cook Islands Māori","Cook Islands dollar (CKD), New Zealand dollar (NZD)",236.0
+Djibouti,Djibouti,Africa,1066809,"Arabic, French",Djiboutian franc (DJF),23200.0
+Saint Pierre and Miquelon,Saint-Pierre,Americas,5819,French,Euro (EUR),242.0
+Austria,Vienna,Europe,9200931,German,Euro (EUR),83871.0
+Indonesia,Jakarta,Asia,284438782,Indonesian,Indonesian rupiah (IDR),1904569.0
+Nauru,Yaren,Oceania,11680,"English, Nauru",Australian dollar (AUD),21.0
+Kazakhstan,Astana,Asia,20426568,"Kazakh, Russian",Kazakhstani tenge (KZT),2724900.0
+Malawi,Lilongwe,Africa,20734262,"English, Chewa",Malawian kwacha (MWK),118484.0
+Eritrea,Asmara,Africa,3607000,"Arabic, English, Tigrinya",Eritrean nakfa (ERN),117600.0
+Tunisia,Tunis,Africa,11972169,Arabic,Tunisian dinar (TND),163610.0
+Pitcairn Islands,Adamstown,Oceania,35,English,New Zealand dollar (NZD),47.0
+Saudi Arabia,Riyadh,Asia,35300280,Arabic,Saudi riyal (SAR),2149690.0
+Turkmenistan,Ashgabat,Asia,7057841,"Russian, Turkmen",Turkmenistan manat (TMT),488100.0
+Western Sahara,El Aaiún,Africa,600904,"Berber, Hassaniya, Spanish","Algerian dinar (DZD), Moroccan dirham (MAD), Mauritanian ouguiya (MRU)",266000.0
+Ghana,Accra,Africa,33742380,English,Ghanaian cedi (GHS),238533.0
+Tuvalu,Funafuti,Oceania,10643,"English, Tuvaluan","Australian dollar (AUD), Tuvaluan dollar (TVD)",26.0
+Myanmar,Naypyidaw,Asia,51316756,Burmese,Burmese kyat (MMK),676578.0
+Gabon,Libreville,Africa,2469296,French,Central African CFA franc (XAF),267668.0
+Cuba,Havana,Americas,9748007,Spanish,"Cuban convertible peso (CUC), Cuban peso (CUP)",109884.0
+China,Beijing,Asia,1408280000,Chinese,Chinese yuan (CNY),9706961.0
+Panama,Panama City,Americas,4064780,Spanish,"Panamanian balboa (PAB), United States dollar (USD)",75417.0
+Thailand,Bangkok,Asia,65859640,Thai,Thai baht (THB),513120.0
+Russia,Moscow,Europe,146028325,Russian,Russian ruble (RUB),17098246.0
+Bosnia and Herzegovina,Sarajevo,Europe,3422000,"Bosnian, Croatian, Serbian",Bosnia and Herzegovina convertible mark (BAM),51209.0
+Qatar,Doha,Asia,3173024,Arabic,Qatari riyal (QAR),11586.0
+Bouvet Island,Sin capital,Antarctic,0,Norwegian,Sin dato,49.0
+Iraq,Baghdad,Asia,46118793,"Arabic, Aramaic, Sorani",Iraqi dinar (IQD),438317.0
+Tajikistan,Dushanbe,Asia,10499000,"Russian, Tajik",Tajikistani somoni (TJS),143100.0
+Guyana,Georgetown,Americas,772975,English,Guyanese dollar (GYD),214969.0
+Solomon Islands,Honiara,Oceania,750325,English,Solomon Islands dollar (SBD),28896.0
+Slovakia,Bratislava,Europe,5413813,Slovak,Euro (EUR),49037.0
+Gibraltar,Gibraltar,Europe,38000,English,Gibraltar pound (GIP),6.0
+Peru,Lima,Americas,34350244,"Aymara, Quechua, Spanish",Peruvian sol (PEN),1285216.0
+Puerto Rico,San Juan,Americas,3203295,"English, Spanish",United States dollar (USD),8870.0
+Armenia,Yerevan,Asia,3076200,Armenian,Armenian dram (AMD),29743.0
+Azerbaijan,Baku,Asia,10241722,Azerbaijani,Azerbaijani manat (AZN),86600.0
+Mauritania,Nouakchott,Africa,4927532,Arabic,Mauritanian ouguiya (MRU),1030700.0
+Belize,Belmopan,Americas,417634,"Belizean Creole, English, Spanish",Belize dollar (BZD),22966.0
+Anguilla,The Valley,Americas,16010,English,Eastern Caribbean dollar (XCD),91.0
+Seychelles,Victoria,Africa,122729,"Seychellois Creole, English, French",Seychellois rupee (SCR),452.0
+Norfolk Island,Kingston,Oceania,2188,"English, Norfuk",Australian dollar (AUD),36.0
+Philippines,Manila,Asia,114123600,"English, Filipino",Philippine peso (PHP),342353.0
+Argentina,Buenos Aires,Americas,46735004,"Guaraní, Spanish",Argentine peso (ARS),2780400.0
+Moldova,Chișinău,Europe,2749076,Romanian,Moldovan leu (MDL),33847.0
+Samoa,Apia,Oceania,205557,"English, Samoan",Samoan tālā (WST),2842.0
+Antarctica,Sin capital,Antarctic,1300,Sin dato,Sin dato,14000000.0
+Sierra Leone,Freetown,Africa,9077691,English,Leone (SLE),71740.0
+Cambodia,Phnom Penh,Asia,17577760,Khmer,"Cambodian riel (KHR), United States dollar (USD)",181035.0
+Vanuatu,Port Vila,Oceania,321409,"Bislama, English, French",Vanuatu vatu (VUV),12189.0
+Jordan,Amman,Asia,11734000,Arabic,Jordanian dinar (JOD),89342.0
+Martinique,Fort-de-France,Americas,349925,French,Euro (EUR),1128.0
+Tonga,Nuku'alofa,Oceania,100179,"English, Tongan",Tongan paʻanga (TOP),747.0
+British Virgin Islands,Road Town,Americas,39471,English,United States dollar (USD),151.0
+Timor-Leste,Dili,Asia,1391221,"Portuguese, Tetum",United States dollar (USD),14874.0
+French Polynesia,Papeetē,Oceania,279500,French,CFP franc (XPF),4167.0
+Turkey,Ankara,Asia,85664944,Turkish,Turkish lira (TRY),783562.0
+Guernsey,St. Peter Port,Europe,64781,"English, French, Guernésiais","British pound (GBP), Guernsey pound (GGP)",78.0
+Senegal,Dakar,Africa,18593258,French,West African CFA franc (XOF),196722.0
+Guatemala,Guatemala City,Americas,18079810,Spanish,Guatemalan quetzal (GTQ),108889.0
+Poland,Warsaw,Europe,37392000,Polish,Polish złoty (PLN),312679.0
+Bahamas,Nassau,Americas,398165,English,"Bahamian dollar (BSD), United States dollar (USD)",13943.0
+Faroe Islands,Tórshavn,Europe,54885,"Danish, Faroese","Danish krone (DKK), Faroese króna (FOK)",1393.0
+Aruba,Oranjestad,Americas,107566,"Dutch, Papiamento",Aruban florin (AWG),180.0
+Dominican Republic,Santo Domingo,Americas,10771504,Spanish,Dominican peso (DOP),48671.0
+Hong Kong,City of Victoria,Asia,7527500,"English, Chinese",Hong Kong dollar (HKD),1104.0
+São Tomé and Príncipe,São Tomé,Africa,209607,Portuguese,São Tomé and Príncipe dobra (STN),964.0
+Uruguay,Montevideo,Americas,3499451,Spanish,Uruguayan peso (UYU),181034.0
+Bermuda,Hamilton,Americas,64055,English,Bermudian dollar (BMD),54.0
+Wallis and Futuna,Mata-Utu,Oceania,11620,French,CFP franc (XPF),142.0
+South Africa,Pretoria,Africa,63100945,"Afrikaans, English, Southern Ndebele, Northern Sotho, Southern Sotho, Swazi, Tswana, Tsonga, Venda, Xhosa, Zulu",South African rand (ZAR),1221037.0
+Israel,Jerusalem,Asia,10134800,"Arabic, Hebrew",Israeli new shekel (ILS),21937.0
+San Marino,City of San Marino,Europe,34132,Italian,Euro (EUR),61.0
+El Salvador,San Salvador,Americas,6029976,Spanish,United States dollar (USD),21041.0
+Mongolia,Ulan Bator,Asia,3544835,Mongolian,Mongolian tögrög (MNT),1564110.0
+American Samoa,Pago Pago,Oceania,49710,"English, Samoan",United States dollar (USD),199.0
+French Southern and Antarctic Lands,Port-aux-Français,Antarctic,400,French,Euro (EUR),7747.0
+Zimbabwe,Harare,Africa,17073087,"Chibarwe, English, Kalanga, Khoisan, Ndau, Northern Ndebele, Chewa, Shona, Sotho, Tonga, Tswana, Tsonga, Venda, Xhosa, Zimbabwean Sign Language",Zimbabwean dollar (ZWL),390757.0
+Falkland Islands,Stanley,Americas,3662,English,Falkland Islands pound (FKP),12173.0
+Croatia,Zagreb,Europe,3866233,Croatian,Euro (EUR),56594.0
+Kiribati,South Tarawa,Oceania,120740,"English, Gilbertese","Australian dollar (AUD), Kiribati dollar (KID)",811.0
+Marshall Islands,Majuro,Oceania,42418,"English, Marshallese",United States dollar (USD),181.0
+Norway,Oslo,Europe,5606944,"Norwegian Nynorsk, Norwegian Bokmål, Sami",Norwegian krone (NOK),386224.0
+Mali,Bamako,Africa,22395489,French,West African CFA franc (XOF),1240192.0
+Zambia,Lusaka,Africa,19693423,English,Zambian kwacha (ZMW),752612.0
+Maldives,Malé,Asia,515132,Maldivian,Maldivian rufiyaa (MVR),300.0
+Antigua and Barbuda,Saint John's,Americas,103603,English,Eastern Caribbean dollar (XCD),442.0
+Christmas Island,Flying Fish Cove,Oceania,1692,English,Australian dollar (AUD),135.0
+Iran,Tehran,Asia,85961000,Persian (Farsi),Iranian rial (IRR),1648195.0
+Italy,Rome,Europe,58927633,"Italian, Catalan",Euro (EUR),301336.0
+Gambia,Banjul,Africa,2422712,English,dalasi (GMD),10689.0
+South Korea,Seoul,Asia,51159889,Korean,South Korean won (KRW),100210.0
+Papua New Guinea,Port Moresby,Oceania,11781559,"English, Hiri Motu, Tok Pisin",Papua New Guinean kina (PGK),462840.0
+Egypt,Cairo,Africa,107271260,Arabic,Egyptian pound (EGP),1002450.0
+Isle of Man,Douglas,Europe,84530,"English, Manx","British pound (GBP), Manx pound (IMP)",572.0
+Latvia,Riga,Europe,1829000,Latvian,Euro (EUR),64559.0
+Paraguay,Asunción,Americas,6109644,"Guaraní, Spanish",Paraguayan guaraní (PYG),406752.0
+Grenada,St. George's,Americas,109021,English,Eastern Caribbean dollar (XCD),344.0
+Colombia,Bogotá,Americas,53057212,Spanish,Colombian peso (COP),1141748.0
+Finland,Helsinki,Europe,5650325,"Finnish, Swedish",Euro (EUR),338455.0
+Bulgaria,Sofia,Europe,6437360,Bulgarian,Bulgarian lev (BGN),110879.0
+Togo,Lomé,Africa,8095498,French,West African CFA franc (XOF),56785.0
+Chile,Santiago,Americas,20206953,Spanish,Chilean peso (CLP),756102.0
+Dominica,Roseau,Americas,67408,English,Eastern Caribbean dollar (XCD),751.0
+Ireland,Dublin,Europe,5458600,"English, Irish",Euro (EUR),70273.0
+Botswana,Gaborone,Africa,2359609,"English, Tswana",Botswana pula (BWP),582000.0
+Kosovo,Pristina,Europe,1585566,"Albanian, Serbian",Euro (EUR),10908.0
+United States,"Washington, D.C.",Americas,340110988,English,United States dollar (USD),9525067.0
+Uzbekistan,Tashkent,Asia,37859698,"Russian, Uzbek",Uzbekistani soʻm (UZS),447400.0
+Brazil,Brasília,Americas,213421037,Portuguese,Brazilian real (BRL),8515767.0
+Rwanda,Kigali,Africa,14104969,"English, French, Kinyarwanda",Rwandan franc (RWF),26338.0
+Liechtenstein,Vaduz,Europe,40900,German,Swiss franc (CHF),160.0
+Bhutan,Thimphu,Asia,784043,Dzongkha,"Bhutanese ngultrum (BTN), Indian rupee (INR)",38394.0
+Montenegro,Podgorica,Europe,623327,Montenegrin,Euro (EUR),13812.0
+Niger,Niamey,Africa,26312034,French,West African CFA franc (XOF),1267000.0
+Albania,Tirana,Europe,2363314,Albanian,Albanian lek (ALL),28748.0
+Morocco,Rabat,Africa,36828330,"Arabic, Berber",Moroccan dirham (MAD),446550.0
+Venezuela,Caracas,Americas,28517000,Spanish,Venezuelan bolívar soberano (VES),916445.0
+Republic of the Congo,Brazzaville,Africa,6142180,"French, Kikongo, Lingala",Central African CFA franc (XAF),342000.0
+Burundi,Gitega,Africa,12332788,"French, Kirundi",Burundian franc (BIF),27834.0
+Jersey,Saint Helier,Europe,103267,"English, French, Jèrriais","British pound (GBP), Jersey pound (JEP)",116.0
+North Macedonia,Skopje,Europe,1822612,Macedonian,denar (MKD),25713.0
+Kyrgyzstan,Bishkek,Asia,7281800,"Kyrgyz, Russian",Kyrgyzstani som (KGS),199951.0
+Romania,Bucharest,Europe,19036031,Romanian,Romanian leu (RON),238391.0
+Guam,Hagåtña,Oceania,153836,"Chamorro, English, Spanish",United States dollar (USD),549.0
+Åland Islands,Mariehamn,Europe,30654,Swedish,Euro (EUR),1580.0
+Equatorial Guinea,Malabo,Africa,1668768,"French, Portuguese, Spanish",Central African CFA franc (XAF),28051.0
+South Georgia,King Edward Point,Antarctic,0,English,British pound (GBP),3903.0
+French Guiana,Cayenne,Americas,292354,French,Euro (EUR),83534.0
+Germany,Berlin,Europe,83491249,German,Euro (EUR),357114.0
+Denmark,Copenhagen,Europe,6011488,Danish,Danish krone (DKK),43094.0
+Iceland,Reykjavik,Europe,391810,Icelandic,Icelandic króna (ISK),103000.0
+Somalia,Mogadishu,Africa,19655000,"Arabic, Somali",Somali shilling (SOS),637657.0
+Micronesia,Palikir,Oceania,105564,English,United States dollar (USD),702.0
+Laos,Vientiane,Asia,7647000,Lao,Lao kip (LAK),236800.0
+Sint Maarten,Philipsburg,Americas,41349,"English, French, Dutch",Netherlands Antillean guilder (ANG),34.0
+Liberia,Monrovia,Africa,5248621,English,Liberian dollar (LRD),111369.0
+Chad,N'Djamena,Africa,19340757,"Arabic, French",Central African CFA franc (XAF),1284000.0
+Australia,Canberra,Oceania,27536874,English,Australian dollar (AUD),7692024.0
+Burkina Faso,Ouagadougou,Africa,24070553,French,West African CFA franc (XOF),272967.0
+Malta,Valletta,Europe,574250,"English, Maltese",Euro (EUR),316.0
+Northern Mariana Islands,Saipan,Oceania,47329,"Carolinian, Chamorro, English",United States dollar (USD),464.0
+Uganda,Kampala,Africa,45905417,"English, Swahili",Ugandan shilling (UGX),241550.0
+Spain,Madrid,Europe,49315949,"Spanish, Catalan, Basque, Galician",Euro (EUR),505992.0
+Sudan,Khartoum,Africa,51662000,"Arabic, English",Sudanese pound (SDG),1886068.0
+Taiwan,Taipei,Asia,23317031,Chinese,New Taiwan dollar (TWD),36197.0
+Afghanistan,Kabul,Asia,43844000,"Dari, Pashto, Turkmen",Afghan afghani (AFN),652230.0
+Svalbard and Jan Mayen,Longyearbyen,Europe,2530,Norwegian,krone (NOK),61399.0
+Fiji,Suva,Oceania,900869,"English, Fijian, Fiji Hindi",Fijian dollar (FJD),18272.0
+Guinea-Bissau,Bissau,Africa,1781308,"Portuguese, Upper Guinea Creole",West African CFA franc (XOF),36125.0
+Andorra,Andorra la Vella,Europe,88406,Catalan,Euro (EUR),468.0
+Algeria,Algiers,Africa,47400000,Arabic,Algerian dinar (DZD),2381741.0
+Portugal,Lisbon,Europe,10749635,Portuguese,Euro (EUR),92090.0
+Mozambique,Maputo,Africa,34090466,Portuguese,Mozambican metical (MZN),801590.0
+Lesotho,Maseru,Africa,2116427,"English, Sotho","Lesotho loti (LSL), South African rand (ZAR)",30355.0
+North Korea,Pyongyang,Asia,25950000,Korean,North Korean won (KPW),120538.0
+Singapore,Singapore,Asia,6110200,"English, Chinese, Malay, Tamil",Singapore dollar (SGD),710.0
+Monaco,Monaco,Europe,38423,French,Euro (EUR),2.02
+Lebanon,Beirut,Asia,5490000,"Arabic, French",Lebanese pound (LBP),10452.0
+Serbia,Belgrade,Europe,6567783,Serbian,Serbian dinar (RSD),77589.0
+Estonia,Tallinn,Europe,1369995,Estonian,Euro (EUR),45227.0
+Barbados,Bridgetown,Americas,267800,English,Barbadian dollar (BBD),430.0
+Mauritius,Port Louis,Africa,1243741,"English, French, Mauritian Creole",Mauritian rupee (MUR),2040.0
+"Saint Helena, Ascension and Tristan da Cunha",Jamestown,Africa,5651,English,"Pound sterling (GBP), Saint Helena pound (SHP)",394.0
+Belgium,Brussels,Europe,11825551,"German, French, Dutch",Euro (EUR),30528.0
+Libya,Tripoli,Africa,7459000,Arabic,Libyan dinar (LYD),1759540.0
+Nicaragua,Managua,Americas,6803886,Spanish,Nicaraguan córdoba (NIO),130373.0
+Kuwait,Kuwait City,Asia,4881254,Arabic,Kuwaiti dinar (KWD),17818.0
+New Caledonia,Nouméa,Oceania,264596,French,CFP franc (XPF),18575.0
+France,Paris,Europe,66351959,French,Euro (EUR),543908.0
+Vietnam,Hanoi,Asia,101343800,Vietnamese,Vietnamese đồng (VND),331212.0
+Saint Vincent and the Grenadines,Kingstown,Americas,110872,English,Eastern Caribbean dollar (XCD),389.0
+Bahrain,Manama,Asia,1594654,Arabic,Bahraini dinar (BHD),765.0
+Curaçao,Willemstad,Americas,156115,"English, Dutch, Papiamento",Netherlands Antillean guilder (ANG),444.0
+Bangladesh,Dhaka,Asia,169828911,Bengali,Bangladeshi taka (BDT),147570.0
+Ivory Coast,Yamoussoukro,Africa,31719275,French,West African CFA franc (XOF),322463.0
+DR Congo,Kinshasa,Africa,112832000,"French, Kikongo, Lingala, Tshiluba, Swahili",Congolese franc (CDF),2344858.0
+Sri Lanka,Sri Jayawardenepura Kotte,Asia,21763170,"Sinhala, Tamil",Sri Lankan rupee (LKR),65610.0
+United States Minor Outlying Islands,Washington DC,Americas,0,English,United States dollar (USD),34.2
+Caribbean Netherlands,Kralendijk,Americas,31980,"English, Dutch, Papiamento",United States dollar (USD),328.0
+Nepal,Kathmandu,Asia,29911840,Nepali,Nepalese rupee (NPR),147181.0
+Bolivia,Sucre,Americas,11365333,"Aymara, Guaraní, Quechua, Spanish",Bolivian boliviano (BOB),1098581.0
+Namibia,Windhoek,Africa,3022401,"Afrikaans, German, English, Herero, Khoekhoe, Kwangali, Lozi, Ndonga, Tswana","Namibian dollar (NAD), South African rand (ZAR)",825615.0
+Haiti,Port-au-Prince,Americas,11867032,"French, Haitian Creole",Haitian gourde (HTG),27750.0
+Suriname,Paramaribo,Americas,616500,Dutch,Surinamese dollar (SRD),163820.0
+Saint Martin,Marigot,Americas,31496,French,Euro (EUR),53.0
+Canada,Ottawa,Americas,41651653,"English, French",Canadian dollar (CAD),9984670.0
+Honduras,Tegucigalpa,Americas,9892632,Spanish,Honduran lempira (HNL),112492.0
+Vatican City,Vatican City,Europe,882,"Italian, Latin",Euro (EUR),0.49
+United Arab Emirates,Abu Dhabi,Asia,11294243,Arabic,United Arab Emirates dirham (AED),83600.0
+Guinea,Conakry,Africa,14363931,French,Guinean franc (GNF),245857.0
+Cameroon,Yaoundé,Africa,29442327,"English, French",Central African CFA franc (XAF),475442.0
+Cyprus,Nicosia,Europe,1442614,"Greek, Turkish",Euro (EUR),9251.0
+Trinidad and Tobago,Port of Spain,Americas,1367764,English,Trinidad and Tobago dollar (TTD),5130.0
+Sweden,Stockholm,Europe,10605098,Swedish,Swedish krona (SEK),450295.0
+Madagascar,Antananarivo,Africa,31727042,"French, Malagasy",Malagasy ariary (MGA),587041.0
+Mayotte,Mamoudzou,Africa,320901,French,Euro (EUR),374.0
+Cayman Islands,George Town,Americas,84738,English,Cayman Islands dollar (KYD),264.0
+Malaysia,Kuala Lumpur,Asia,34231700,"English, Malay",Malaysian ringgit (MYR),330803.0
+Benin,Porto-Novo,Africa,13224860,French,West African CFA franc (XOF),112622.0
+Greenland,Nuuk,Americas,56542,Greenlandic,krone (DKK),2166086.0
+Switzerland,Bern,Europe,9082848,"French, Swiss German, Italian, Romansh",Swiss franc (CHF),41284.0
+Georgia,Tbilisi,Asia,4000921,Georgian,lari (GEL),69700.0
+Ecuador,Quito,Americas,18103660,Spanish,United States dollar (USD),276841.0
+Cape Verde,Praia,Africa,491233,Portuguese,Cape Verdean escudo (CVE),4033.0
+Luxembourg,Luxembourg,Europe,681973,"German, French, Luxembourgish",Euro (EUR),2586.0
+Saint Lucia,Castries,Americas,184100,English,Eastern Caribbean dollar (XCD),616.0
+United States Virgin Islands,Charlotte Amalie,Americas,87146,English,United States dollar (USD),347.0
+Japan,Tokyo,Asia,123210000,Japanese,Japanese yen (JPY),377930.0
+Jamaica,Kingston,Americas,2825544,"English, Jamaican Patois",Jamaican dollar (JMD),10991.0
+Ethiopia,Addis Ababa,Africa,111652998,Amharic,Ethiopian birr (ETB),1104300.0
+Pakistan,Islamabad,Asia,241499431,"English, Urdu",Pakistani rupee (PKR),796095.0
+Montserrat,Plymouth,Americas,4386,English,Eastern Caribbean dollar (XCD),102.0
+Lithuania,Vilnius,Europe,2894886,Lithuanian,Euro (EUR),65300.0
+Greece,Athens,Europe,10400720,Greek,Euro (EUR),131990.0
