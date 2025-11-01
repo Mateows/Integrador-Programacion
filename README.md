@@ -134,7 +134,9 @@ El programa presenta un menú interactivo con las siguientes opciones:
 
 10·Agregar/Eliminar país: Permite la gestión manual de la lista local.
 
-11·Salir: Cierra el programa.
+11·Mostrar Idiomas: Muestra la cabecera de Paises & Idiomas
+
+12·Salir: Cierra el programa.
 
 📁 Estructura del Proyecto
 El código está organizado en los siguientes módulos para una clara separación de responsabilidades:
