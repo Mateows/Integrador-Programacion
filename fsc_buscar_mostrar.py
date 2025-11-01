@@ -153,4 +153,4 @@ def mostrar_menu():
     print("9. Mostrar estadísticas")
     print("10. Agregar/Eliminar/Editar país")
     print("11. Mostrar paises y sus idiomas")
-    print("11. Salir")
+    print("12. Salir")
