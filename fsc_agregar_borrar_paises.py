@@ -18,29 +18,64 @@ def agregar_editar_eliminar_pais(paises, ruta_csv="paises.csv"):
     if opcion == "AG":
         while True:
             try:
-                cantidad = int(input("¿Cuántos países desea agregar? (Ingrese un numero entero positivo): "))
-                if cantidad <0:
+                cantidad = int(input("¿Cuántos países desea agregar? (Ingrese un número entero positivo): "))
+                if cantidad <= 0:
                     raise ValueError
                 break
             except ValueError:
-         
                 print("Ingrese un número válido.")
 
-        paises_agregados = []  # Lista para acumular los nombres de países agregados
-       
+        paises_agregados = []
+
         for _ in range(cantidad):
-            # Validación de cada campo con buclles while
+
+            # ===== VALIDACIÓN DE NOMBRE =====
             while True:
                 nombre = input("Ingrese el nombre del país: ").strip().title()
-                if nombre and all(p["nombre"].lower() != nombre.lower() for p in paises):
+                if not nombre:
+                    print("El nombre no puede estar vacío.")
+                    continue
+                if any(char.isdigit() for char in nombre):
+                    print("El nombre del país no debe contener números. Intente nuevamente.")
+                    continue
+                if any(p["nombre"].lower() == nombre.lower() for p in paises):
+                    print("Ese país ya existe. Ingrese otro nombre.")
+                    continue
+                break
+
+            # ===== VALIDACIÓN DE CAPITAL =====
+            while True:
+                capital = input("Ingrese la capital: ").strip().title() or "Desconocida"
+                if any(char.isdigit() for char in capital):
+                    print("La capital no puede contener números. Intente nuevamente.")
+                else:
                     break
-                print("Nombre vacío o país ya existente.")
 
-            capital = input("Ingrese la capital: ").strip().title() or "Desconocida"
-            region = input("Ingrese la región o continente: ").strip().title() or "Desconocida"
-            lenguaje = input("Ingrese el lenguaje principal: ").strip().title() or "Desconocido"
-            moneda = input("Ingrese la moneda oficial: ").strip().title() or "Desconocida"
+            # ===== VALIDACIÓN DE REGIÓN =====
+            while True:
+                region = input("Ingrese la región o continente: ").strip().title() or "Desconocida"
+                if any(char.isdigit() for char in region):
+                    print("La región no puede contener números. Intente nuevamente.")
+                else:
+                    break
 
+            # ===== VALIDACIÓN DE LENGUAJE =====
+            while True:
+                lenguaje = input("Ingrese el lenguaje principal: ").strip().title() or "Desconocido"
+                if any(char.isdigit() for char in lenguaje):
+                    print("El lenguaje no puede contener números. Intente nuevamente.")
+                else:
+                    break
+
+            # ===== VALIDACIÓN DE MONEDA =====
+            while True:
+                moneda = input("Ingrese la moneda oficial: ").strip().title() or "Desconocida"
+                if any(char.isdigit() for char in moneda):
+                    print("La moneda no puede contener números. Intente nuevamente.")
+                else:
+                    break
+
+            # ===== VALIDACIÓN DE POBLACIÓN =====
             while True:
                 try:
                     poblacion = int(input("Ingrese la población (entero positivo): ").replace(",", ""))
@@ -50,6 +85,7 @@ def agregar_editar_eliminar_pais(paises, ruta_csv="paises.csv"):
                 except ValueError:
                     print("Error: debe ingresar un número entero positivo para población.")
 
+            # ===== VALIDACIÓN DE SUPERFICIE =====
             while True:
                 try:
                     superficie = float(input("Ingrese la superficie (en km²): ").replace(",", "."))
@@ -59,6 +95,7 @@ def agregar_editar_eliminar_pais(paises, ruta_csv="paises.csv"):
                 except ValueError:
                     print("Error: debe ingresar un número válido para superficie.")
 
+            # Agregar país a la lista
             paises.append({
                 "nombre": nombre,
                 "capital": capital,
@@ -69,8 +106,8 @@ def agregar_editar_eliminar_pais(paises, ruta_csv="paises.csv"):
                 "superficie": superficie
             })
             paises_agregados.append(nombre)
-            print(f"\nSe agregaron correctamente los países: {', '.join(paises_agregados)}.")
 
+        print(f"\nSe agregaron correctamente los países: {', '.join(paises_agregados)}.")
         _guardar_csv(paises, ruta_csv)
 
     # --- ELIMINAR PAÍS ---
@@ -83,7 +120,7 @@ def agregar_editar_eliminar_pais(paises, ruta_csv="paises.csv"):
             if nombre:
                 break
             print("Debe ingresar un nombre.")
-        
+
         encontrados = [p for p in paises if p["nombre"].lower() == nombre.lower()]
         if not encontrados:
             print("No se encontró el país.")
@@ -118,11 +155,22 @@ def agregar_editar_eliminar_pais(paises, ruta_csv="paises.csv"):
         pais = encontrados[0]
         print("Deje vacío para mantener el valor actual.")
 
-        nuevo_nombre = input(f"Nombre ({pais['nombre']}): ").strip().title() or pais['nombre']
-        capital = input(f"Capital ({pais['capital']}): ").strip().title() or pais['capital']
-        region = input(f"Región ({pais['region']}): ").strip().title() or pais['region']
-        lenguaje = input(f"Lenguaje ({pais['lenguaje']}): ").strip().title() or pais['lenguaje']
-        moneda = input(f"Moneda ({pais['moneda']}): ").strip().title() or pais['moneda']
+        def validar_texto(campo, valor_actual):
+            """Valida que un campo de texto no contenga números"""
+            while True:
+                valor = input(f"{campo} ({valor_actual}): ").strip().title()
+                if not valor:
+                    return valor_actual
+                if any(char.isdigit() for char in valor):
+                    print(f"El {campo.lower()} no puede contener números. Intente nuevamente.")
+                else:
+                    return valor
+
+        nuevo_nombre = validar_texto("Nombre", pais["nombre"])
+        capital = validar_texto("Capital", pais["capital"])
+        region = validar_texto("Región", pais["region"])
+        lenguaje = validar_texto("Lenguaje", pais["lenguaje"])
+        moneda = validar_texto("Moneda", pais["moneda"])
 
         while True:
             try:
@@ -144,7 +192,6 @@ def agregar_editar_eliminar_pais(paises, ruta_csv="paises.csv"):
             except ValueError:
                 print("Error: debe ingresar un número válido para superficie.")
 
-        # Actualizar los datos
         pais.update({
             "nombre": nuevo_nombre,
             "capital": capital,
@@ -154,6 +201,7 @@ def agregar_editar_eliminar_pais(paises, ruta_csv="paises.csv"):
             "poblacion": poblacion,
             "superficie": superficie
         })
+
         print(f"\nPaís '{nuevo_nombre}' editado correctamente.")
         _guardar_csv(paises, ruta_csv)
 
@@ -175,3 +223,5 @@ def _guardar_csv(paises, ruta_csv):
         print(f"Cambios guardados correctamente en '{ruta_csv}'.")
     except Exception as e:
         print(f"No se pudo guardar el archivo CSV: {e}")
+
+
